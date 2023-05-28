@@ -1,5 +1,11 @@
 class User < ApplicationRecord
     has_secure_password
+
+    validates :name, :email, :session_token, presence: true, uniqueness: true
+    validates :name, length: {in: 3..30}
+    validate :first_and_last_name_present
+    validates :email, length: {in: 3..255}
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
     validates :password, length: { minimum: 6 }, allow_nil: true
 
     before_validation :ensure_session_token
@@ -12,6 +18,13 @@ class User < ApplicationRecord
         self.session_token = generate_unique_session_token
         save!
         session_token
+    end
+
+    def first_and_last_name_present
+        names = name.split(' ')
+        if names.size < 2
+          errors.add(:name, 'must include both a first name and a last name')
+        end
     end
 
     def self.find_by_credentials(email, password)
