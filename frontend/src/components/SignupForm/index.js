@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import logo from '../../imgs/canal-logo-white.png'
+
 
 
 function SignupFormPage() {
@@ -44,48 +47,73 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        name
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Sign Up</button>
-    </form>
+    <div className="signup-page-container">
+      <div className="logo-link">
+        <Link to="/">
+          <img src={logo} alt="Logo" className="logo-image" />
+        </Link>
+      </div>
+      <div className="signup-form-container">
+        <h2 className="signup-form-title">Sign Up</h2>
+        <form onSubmit={handleSubmit}>
+          <ul className="signup-form-errors">
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+          <div className="signup-form-field">
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="signup-form-field">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="signup-form-field">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="signup-form-field">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button className="signup-form-submit" type="submit">
+            Continue
+          </button>
+
+            <div className="divider-line"></div>
+
+          <div className="divider-break">
+            <span className="divider-text">Already have an account? </span>
+            <Link to="../SignupForm" className="signup-link">Sign in</Link>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 
