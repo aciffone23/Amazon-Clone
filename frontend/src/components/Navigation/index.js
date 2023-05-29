@@ -23,22 +23,43 @@ function Navigation() {
   }
 
   return (
-    <header className="header">
-      <div className="navbar">
-        <div className="logo">
-          <NavLink exact to="/">
-            <img src={logo} alt="Canal Logo" />
-          </NavLink>
-        </div>
-        <div className="search-bar">
-          <input type="text" placeholder="Search" />
-          <button type="submit">Search</button>
-        </div>
-        <div className="session-links">
-          {sessionLinks}
-        </div>
-      </div>
-    </header>
+    <>
+        <header className="header">
+            <div className="navbar">
+                <div className="logo">
+                    <NavLink exact to="/">
+                        <img src={logo} alt="Canal Logo" />
+                    </NavLink>
+                </div>
+                <div className="search-bar">
+                    <input type="text" placeholder="Search" />
+                    <button type="submit">Search</button>
+                </div>
+                <div className="session-links">
+                    {sessionLinks}
+                </div>
+            </div>
+        </header>
+        <nav className="second-navbar" id="nav-main">
+            <ul className="category-list">
+            <li>
+                <NavLink to="/shoes">Shoes</NavLink>
+            </li>
+            <li>
+                <NavLink to="/glasses">Glasses</NavLink>
+            </li>
+            <li>
+                <NavLink to="/bags">Bags</NavLink>
+            </li>
+            <li>
+                <NavLink to="/games">Games</NavLink>
+            </li>
+            <li>
+                <NavLink to="/clothes">Clothes</NavLink>
+            </li>
+            </ul>
+        </nav>
+    </>
   );
 }
 

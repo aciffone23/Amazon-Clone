@@ -7,10 +7,8 @@ import Navigation from './components/Navigation';
 function App() {
   const location = useLocation();
 
-  const isLoginPage = location.pathname === '/login';
-  const isSignupPage = location.pathname === '/signup';
-
-  const renderNavigation = !(isLoginPage || isSignupPage);
+  const restrictedPaths = ['/login', '/signup'];
+  const renderNavigation = !restrictedPaths.includes(location.pathname);
 
   return (
     <>
