@@ -105,9 +105,9 @@ function SignupFormPage() {
             Continue
           </button>
 
-            <div className="divider-line"></div>
+            <div className="divider-line-sign-up"></div>
 
-          <div className="divider-break">
+          <div className="divider-break-sign-up">
             <span className="divider-text">Already have an account? </span>
             <Link to="../SignupForm" className="signup-link">Sign in</Link>
           </div>
