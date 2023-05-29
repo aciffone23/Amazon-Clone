@@ -78,12 +78,12 @@ function LoginFormPage() {
             </form>
         </div>
         <div class="divider-break">
-            <span class="divider-line"></span>
+            <span className="divider-line"></span>
                 <span>New to Canal?</span>
-            <span class="divider-line"></span>
+            <span className="divider-line"></span>
         </div>
         <div className="signup-button">
-            <button onClick={() => navigate('../SignupForm')}>Create your Canal account</button>
+            <button onClick={() => navigate('/signup')}>Create your Canal account</button>
         </div>
     </div>
   );
