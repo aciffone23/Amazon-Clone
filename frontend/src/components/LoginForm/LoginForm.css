@@ -5,8 +5,8 @@
   
 .logo-link {
     margin-bottom: 20px;
-    display: flex; /* Add this line */
-    justify-content: center; /* Add this line */
+    display: flex; 
+    justify-content: center; 
 }
   
 .logo-image {
@@ -22,39 +22,39 @@
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
-  }
+}
   
-  .login-form-title {
+.login-form-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-  }
+}
   
-  .login-form-errors {
+.login-form-errors {
     list-style: none;
     padding: 0;
     margin-bottom: 10px;
     color: red;
-  }
+}
   
-  .login-form-field {
+.login-form-field {
     margin-bottom: 20px;
     width: 95%;
-  }
+}
   
-  .login-form-field label {
+.login-form-field label {
     display: block;
     font-weight: bold;
-  }
+}
   
-  .login-form-field input {
+.login-form-field input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-  }
+}
   
-  .login-form-submit {
+.login-form-submit {
     width: 100%;
     padding: 8px 20px;
     background-color: #ffe733;
@@ -68,9 +68,9 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
-  }
+}
   
-  .signup-button button {
+.signup-button button {
     width: 345px;
     padding: 6px 0;
     font-size: 13px;
@@ -79,13 +79,13 @@
     border: 1px solid #ddd;
     border-radius: 3px;
     cursor: pointer;
-  }
+}
   
-  .signup-button button:hover {
+.signup-button button:hover {
     background-color: #f0f0f0;
-  }
+}
 
-  .divider-break {
+.divider-break {
     display: flex;
     align-items: center;
     justify-content: center;

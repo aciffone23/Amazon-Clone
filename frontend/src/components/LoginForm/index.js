@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 import logo from '../../imgs/canal-logo-white.png'
-// import SignupFormPage from '../SignupForm';
-
 
 
 function LoginFormPage() {
