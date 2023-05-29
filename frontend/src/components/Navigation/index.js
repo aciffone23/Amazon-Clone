@@ -6,6 +6,7 @@ import './Navigation.css';
 import logo from '../../imgs/canal-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import SecondNavBar from './SecondNavBar.js';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -44,28 +45,7 @@ function Navigation() {
                 </div>
             </div>
         </header>
-        <nav className="second-navbar" id="nav-main">
-            <ul className="category-list">
-            <li>
-                <NavLink to="/shoes">Shoes</NavLink>
-            </li>
-            <li>
-                <NavLink to="/glasses">Glasses</NavLink>
-            </li>
-            <li>
-                <NavLink to="/bags">Bags</NavLink>
-            </li>
-            <li>
-                <NavLink to="/electronics">Electronics</NavLink>
-            </li>
-            <li>
-                <NavLink to="/video_games">Video Games</NavLink>
-            </li>
-            <li>
-                <NavLink to="/clothes">Clothes</NavLink>
-            </li>
-            </ul>
-        </nav>
+        <SecondNavBar/>
     </>
   );
 }
