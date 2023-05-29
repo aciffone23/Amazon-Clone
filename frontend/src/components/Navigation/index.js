@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton.js';
 import './Navigation.css';
 import logo from '../../imgs/canal-logo.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -33,7 +35,9 @@ function Navigation() {
                 </div>
                 <div className="search-bar">
                     <input type="text" placeholder="Search" />
-                    <button type="submit">Search</button>
+                    <button type="submit">
+                        <FontAwesomeIcon icon={faSearch} />
+                    </button>
                 </div>
                 <div className="session-links">
                     {sessionLinks}
@@ -52,7 +56,10 @@ function Navigation() {
                 <NavLink to="/bags">Bags</NavLink>
             </li>
             <li>
-                <NavLink to="/games">Games</NavLink>
+                <NavLink to="/electronics">Electronics</NavLink>
+            </li>
+            <li>
+                <NavLink to="/video_games">Video Games</NavLink>
             </li>
             <li>
                 <NavLink to="/clothes">Clothes</NavLink>
