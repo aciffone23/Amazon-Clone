@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
           <i className="fa-solid fa-caret-down" />
           {isMenuOpen && (
             <div className="dropdown-menu">
-              <div className="dropdown-content">
+              {/* <div className="dropdown-content"> */}
                 <div className="sign-in-container">
                   <Link to="/login" className="sign-in-button-dropdown">
                     Sign In
@@ -59,7 +59,7 @@ function ProfileButton({ user }) {
                     Start Here.
                   </Link>
                 </div>
-              </div>
+              {/* </div> */}
             </div>
           )}
         </>

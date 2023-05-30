@@ -23,21 +23,28 @@
   }
   
   .user-info {
-    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    color: black;
   }
   
-  .user-info span {
-    display: block;
-    margin-bottom: 5px;
-  }
   
   .logout-button button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
     background-color: #f0c14b;
     color: #111;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
     border: none;
     border-radius: 4px;
-    padding: 5px 10px;
     cursor: pointer;
+    width: 150%;
+    text-align: center;
+    border-radius: 10px;
   }
   
   .logout-button button:hover {
@@ -64,10 +71,19 @@
     background-color: #ddb347;
   }
 
-  .new-customer-container span {
-    color: black;
-  }
+.user-info {
+  display: flex;
+  color: black;
+  padding: 20px;
+}
 
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
   .register-link {
     text-decoration: none;
     color: blue
