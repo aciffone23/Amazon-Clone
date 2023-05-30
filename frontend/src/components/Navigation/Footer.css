@@ -13,10 +13,12 @@
 } 
 
 .sign-in-container {
+    border-top: 1px solid #ddd;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 40px;
+    background-color: white;
   }
   
   .sign-in-button {
@@ -41,8 +43,10 @@
   }
 
 .new-customer-container {
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 20px;
+    padding-bottom: 45px;
+    font-size: 13px;
 }
