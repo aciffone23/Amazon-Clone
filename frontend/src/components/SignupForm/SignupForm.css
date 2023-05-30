@@ -91,7 +91,7 @@
     text-decoration: none;
 }
 
-.field-error {
+.error {
     color: red; 
     font-size: 12px; 
     border-radius: 1px red;

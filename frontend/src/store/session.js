@@ -21,16 +21,32 @@ export const signup = (user) => async (dispatch) => {
     const { name, email, password } = user;
     const response = await csrfFetch("/api/users", {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name,
         email,
         password
       })
     });
-    const data = await response.json();
-    storeCurrentUser(data.user);
-    dispatch(setCurrentUser(data.user));
-    return response;
+    // debugger
+    // if (!response.ok) {
+    //     debugger
+    //     const data = await response.json();
+    //     throw response;
+    // }
+    // const data = await response.json();
+    // storeCurrentUser(data.user);
+    // dispatch(setCurrentUser(data.user));
+    // return response;
+    if (response.ok) {
+        const data = await response.json()
+        storeCurrentUser(data.user)
+        dispatch(setCurrentUser(data.user))
+        // console.log(data)
+    }
+    return response
 };
 
 export const logout = () => async (dispatch) => {

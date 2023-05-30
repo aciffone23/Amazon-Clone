@@ -15,7 +15,7 @@ function SignupFormPage() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({ email: "", name: "", password: "", confirmPassword: ""});
   const navigate = useNavigate();
 
 
@@ -28,22 +28,37 @@ function SignupFormPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-      setErrors([]);
+      setErrors({ email: "", name: "", password: "", confirmPassword: ""});
       return dispatch(sessionActions.signup({ email, name, password }))
         .catch(async (res) => {
+        console.log(res)
         let data;
         try {
+            
           // .clone() essentially allows you to read the response body twice
+        //   console.log(data?.errors)
           data = await res.clone().json();
         } catch {
-          data = await res.text(); // Will hit this case if the server is down
+            data = await res.text(); // Will hit this case if the server is down
+            console.log(data)
         }
-        if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
+        debugger
+        if (data?.errors) {
+            debugger
+            let newErrors = { email: "", name: "", password: "", confirmPassword: ""}
+            console.log(data?.errors)
+            data.errors.forEach((error) => {
+                if (error.includes("Email"))  newErrors.email = error;
+                else if (error.includes("name")) newErrors.name = error;
+                else if (error.includes("password")) newErrors.password = error;
+                else if (error.includes("Confirm Password")) newErrors.confirmPassword = error;
+            })
+            setErrors(newErrors)
+        } 
       });
+    } else {
+        setErrors(prev => ({ ...prev, confirmPassword:'Confirm Password field must be the same as the Password field'}));
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
   return (
@@ -55,12 +70,7 @@ function SignupFormPage() {
       </div>
       <div className="signup-form-container">
         <h2 className="signup-form-title">Sign Up</h2>
-        <form onSubmit={handleSubmit}>
-          <ul className="signup-form-errors">
-            {errors.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
+        <form onSubmit={handleSubmit} autoComplete="off" noValidate>
           <div className="signup-form-field">
             <label htmlFor="email">Email</label>
             <input
@@ -70,6 +80,7 @@ function SignupFormPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+            {errors.email && <div className="error">{errors.email}</div>}
           </div>
           <div className="signup-form-field">
             <label htmlFor="name">Name</label>
@@ -80,6 +91,7 @@ function SignupFormPage() {
               onChange={(e) => setName(e.target.value)}
               required
             />
+            {errors.name && <div className="error">{errors.name}</div>}
           </div>
           <div className="signup-form-field">
             <label htmlFor="password">Password</label>
@@ -90,6 +102,7 @@ function SignupFormPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            {errors.password && <div className="error">{errors.password}</div>}
           </div>
           <div className="signup-form-field">
             <label htmlFor="confirmPassword">Confirm Password</label>
@@ -100,6 +113,7 @@ function SignupFormPage() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
+            {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
           </div>
           <button className="signup-form-submit" type="submit">
             Continue

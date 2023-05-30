@@ -84,7 +84,7 @@ function LoginFormPage() {
             <button className="login-form-demo" onClick={(e) => handleSubmit(e, true)}>Log In as Demo User</button>
             </form>
         </div>
-        <div class="divider-break">
+        <div className="divider-break">
             <span className="divider-line"></span>
                 <span>New to Canal?</span>
             <span className="divider-line"></span>
