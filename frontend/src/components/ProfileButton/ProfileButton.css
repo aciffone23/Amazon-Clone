@@ -1,0 +1,78 @@
+.profile-button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    width: 400px;
+    transform: translateX(25px);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    display: none;
+  }
+  
+  .profile-button:hover .dropdown-menu {
+    display: block; 
+  }
+  
+  .user-info {
+    margin-bottom: 10px;
+  }
+  
+  .user-info span {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .logout-button button {
+    background-color: #f0c14b;
+    color: #111;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .logout-button button:hover {
+    background-color: #ddb347;
+  }
+
+  .sign-in-button-dropdown {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f0c14b;
+    color: #111;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 40%;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .sign-in-button-dropdown:hover {
+    background-color: #ddb347;
+  }
+
+  .new-customer-container span {
+    color: black;
+  }
+
+  .register-link {
+    text-decoration: none;
+    color: blue
+  }
+  .register-link:hover {
+    text-decoration: underline;
+  }
+  

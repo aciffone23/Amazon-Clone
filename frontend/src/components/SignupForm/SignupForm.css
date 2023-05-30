@@ -90,3 +90,9 @@
     color: #0066c0;
     text-decoration: none;
 }
+
+.field-error {
+    color: red; 
+    font-size: 12px; 
+    border-radius: 1px red;
+  }

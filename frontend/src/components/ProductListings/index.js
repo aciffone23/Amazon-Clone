@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 
 function ProductListings () {
     return (
-    <div class="product-listing">
+    <div className="product-listing">
         <Link to="/shoes" className="product-box">
             <h4>Shop Shoes</h4>
             <img src={shoes} alt="Shoes" />
