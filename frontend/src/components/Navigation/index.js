@@ -5,7 +5,7 @@ import ProfileButton from '../ProfileButton/index.js';
 import './Navigation.css';
 import logo from '../../imgs/canal-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import SecondNavBar from '../SecondNavBar/index.js';
 import ProductListings from '../ProductListings/index.js';
 import Footer from '../Footer/index.js';
@@ -51,14 +51,17 @@ function Navigation() {
                 )}
             </div>
             <div>
-              <NavLink to="/returns-orders" className="placeholder-link">
-                  Returns
-                  <br/>
-                  & Orders
-              </NavLink>
-              {/* <NavLink to="/cart" className="cart-link">
-                  <FontAwesomeIcon icon="fa-sharp fa-regular fa-cart-minus" size="lg" style={{color: "#ffffff",}} />   
-              </NavLink> */}
+                <NavLink to="/returns-orders" className="placeholder-link">
+                    Returns
+                    <br/>
+                    & Orders
+                </NavLink>
+                <FontAwesomeIcon
+                    className="cart-icon"
+                    icon={faShoppingCart}
+                    size="2x" 
+                    style={{ color: "#ffffff" }}
+            />
             </div>
           </div> 
         </div>
