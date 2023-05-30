@@ -15,9 +15,8 @@ function App() {
 
   return (
     <div className={`container ${shouldApplyBackground ? 'with-background' : ''}`}>
-      {renderNavigation && <Navigation />}
       <Routes>
-        <Route path="/" element={<Navigation />} />
+        <Route path="/" element={renderNavigation && <Navigation />} />
         <Route path="/login" element={<LoginFormPage />} />
         <Route path="/signup" element={<SignupFormPage />} />
       </Routes>
