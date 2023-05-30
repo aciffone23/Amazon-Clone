@@ -36,10 +36,9 @@ function LoginFormPage() {
       .catch(async (res) => {
         let data;
         try {
-          // .clone() essentially allows you to read the response body twice
           data = await res.clone().json();
         } catch {
-          data = await res.text(); // Will hit this case if the server is down
+          data = await res.text(); 
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
@@ -56,10 +55,7 @@ function LoginFormPage() {
         </div>
         <div className="login-form-container">
             <h2 className="login-form-title">Sign In</h2>
-            <form onSubmit={handleSubmit}>
-            <ul className="login-form-errors">
-                {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
+            <form onSubmit={handleSubmit} autoComplete="off" noValidate>
             <div className="login-form-field">
                 <label htmlFor="email">Email</label>
                 <input
@@ -69,6 +65,7 @@ function LoginFormPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 />
+                {errors.map(error => <p className="error" key={error}>{error}</p>)}
             </div>
             <div className="login-form-field">
                 <label htmlFor="password">Password</label>

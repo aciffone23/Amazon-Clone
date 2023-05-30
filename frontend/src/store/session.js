@@ -30,21 +30,10 @@ export const signup = (user) => async (dispatch) => {
         password
       })
     });
-    // debugger
-    // if (!response.ok) {
-    //     debugger
-    //     const data = await response.json();
-    //     throw response;
-    // }
-    // const data = await response.json();
-    // storeCurrentUser(data.user);
-    // dispatch(setCurrentUser(data.user));
-    // return response;
     if (response.ok) {
         const data = await response.json()
         storeCurrentUser(data.user)
         dispatch(setCurrentUser(data.user))
-        // console.log(data)
     }
     return response
 };
@@ -72,9 +61,11 @@ export const login = ({ email, password }) => async dispatch => {
       method: "POST",
       body: JSON.stringify({ email, password })
     });
-    const data = await response.json();
-    storeCurrentUser(data.user);
-    dispatch(setCurrentUser(data.user));
+    if (response.ok) {
+        const data = await response.json()
+        storeCurrentUser(data.user)
+        dispatch(setCurrentUser(data.user))
+    }
     return response;
 };
 

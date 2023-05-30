@@ -116,7 +116,11 @@
     cursor: pointer;
     margin-bottom: 15px;
 }
-
+.error {
+    color: red; 
+    font-size: 12px; 
+    border-radius: 1px red;
+  }
 
 
   
