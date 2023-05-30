@@ -21,6 +21,11 @@ ApplicationRecord.transaction do
       email: 'testuser@gmail.com', 
       password: 'password'
     )
+    User.create!(
+      name: 'Demo User', 
+      email: 'demouser@gmail.com', 
+      password: 'password'
+    )
   
     # More users
     10.times do 

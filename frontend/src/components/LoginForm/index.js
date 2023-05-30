@@ -21,10 +21,18 @@ function LoginFormPage() {
     }
   }, [navigate, sessionUser]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, isDemoUser = false) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ email, password }))
+
+    let credentials;
+    if (isDemoUser) {
+      credentials = { email: 'demouser@gmail.com', password: 'password' }
+    } else {
+      credentials = { email, password }
+    }
+
+    return dispatch(sessionActions.login(credentials))
       .catch(async (res) => {
         let data;
         try {
@@ -73,6 +81,7 @@ function LoginFormPage() {
                 />
             </div>
             <button className="login-form-submit" type="submit">Continue</button>
+            <button className="login-form-demo" onClick={(e) => handleSubmit(e, true)}>Log In as Demo User</button>
             </form>
         </div>
         <div class="divider-break">

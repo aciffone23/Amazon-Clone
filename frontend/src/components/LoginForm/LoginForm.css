@@ -62,6 +62,7 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-bottom: 15px;
 }
 
 .signup-button {
@@ -104,6 +105,18 @@
     color: #555;
     
 }
+
+.login-form-demo {
+    width: 100%;
+    padding: 8px 20px;
+    background-color: #ffe733;
+    color: #111;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
 
 
   
