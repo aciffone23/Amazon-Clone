@@ -7,6 +7,9 @@ import logo from '../../imgs/canal-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import SecondNavBar from './SecondNavBar.js';
+import ProductListings from './ProductListings.js';
+import Footer from './Footer.js';
+
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -27,25 +30,29 @@ function Navigation() {
 
   return (
     <>
-        <header className="header">
-            <div className="navbar">
-                <div className="logo">
-                    <NavLink exact to="/">
-                        <img src={logo} alt="Canal Logo" />
-                    </NavLink>
+        <div className="navigation-container">
+            <header className="header">
+                <div className="navbar">
+                    <div className="logo">
+                        <NavLink exact to="/">
+                            <img src={logo} alt="Canal Logo" />
+                        </NavLink>
+                    </div>
+                    <div className="search-bar">
+                        <input type="text" placeholder="Search" />
+                        <button type="submit">
+                            <FontAwesomeIcon icon={faSearch} />
+                        </button>
+                    </div>
+                    <div className="session-links">
+                        {sessionLinks}
+                    </div>
                 </div>
-                <div className="search-bar">
-                    <input type="text" placeholder="Search" />
-                    <button type="submit">
-                        <FontAwesomeIcon icon={faSearch} />
-                    </button>
-                </div>
-                <div className="session-links">
-                    {sessionLinks}
-                </div>
-            </div>
-        </header>
-        <SecondNavBar/>
+            </header>
+            <SecondNavBar/>
+            <ProductListings/>
+            <Footer/>
+        </div>
     </>
   );
 }
