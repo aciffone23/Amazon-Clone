@@ -54,7 +54,7 @@ function Navigation() {
             >
                 <ProfileButton user={sessionUser} />
                 {showDropdown && sessionUser && (
-                <div className="dropdown-menu"/>
+                <div className="dropdown-menu" />
                 )}
             </div>
                 <NavLink to="/returns-orders" className="placeholder-link">

@@ -45,6 +45,8 @@
 .login-form-field label {
     display: block;
     font-weight: bold;
+    font-size: 13px;
+    padding: 0px 0px 2px 2px;
 }
   
 .login-form-field input {

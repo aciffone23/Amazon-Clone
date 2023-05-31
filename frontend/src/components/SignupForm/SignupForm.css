@@ -44,6 +44,8 @@
 .signup-form-field label {
     display: block;
     font-weight: bold;
+    font-size: 13px;
+    padding: 0px 0px 2px 2px;
 }
   
 .signup-form-field input {
@@ -51,6 +53,7 @@
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 12px;
 }
   
 .signup-form-submit {
@@ -77,6 +80,7 @@
     display: flex;
     align-items: center;
     margin-top: 10px;
+    font-size: 11px;
 }
 
 .divider-text {
