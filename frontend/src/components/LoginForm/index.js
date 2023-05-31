@@ -64,6 +64,7 @@ function LoginFormPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                style={{ borderColor: errors.length > 0 ? 'red' : '#ddd' }}
                 />
                 {errors.map(error => <p className="error" key={error}>{error}</p>)}
             </div>
@@ -75,6 +76,7 @@ function LoginFormPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                style={{ borderColor: errors.length > 0 ? 'red' : '#ddd' }}
                 />
             </div>
             <button className="login-form-submit" type="submit">Continue</button>
