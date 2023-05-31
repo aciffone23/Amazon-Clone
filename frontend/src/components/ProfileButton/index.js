@@ -25,10 +25,12 @@ function ProfileButton({ user }) {
     <div className="profile-button" onMouseEnter={openMenu} onMouseLeave={closeMenu}>
       {user ? (
         <>
-          <span>Hello, {user.name}</span>
-          <i className="fa-solid fa-caret-down" />
-          {isMenuOpen && (
-            <div className="dropdown-menu">
+        <span>Hello, {user.name}</span>
+        <i className="fa-solid fa-caret-down" />
+        {isMenuOpen && (
+          <>
+            <div className="dimmedLayer" ></div>
+            <div className="dropdown-menu" onMouseLeave={closeMenu}>
               <div className="dropdown-content">
                 <div className="user-info">
                   <span>{user.name}</span>
@@ -39,14 +41,17 @@ function ProfileButton({ user }) {
                 </div>
               </div>
             </div>
-          )}
-        </>
+          </>
+        )}
+      </>
       ) : (
         <>
           <span>Hello, Sign in</span>
           <i className="fa-solid fa-caret-down" />
           {isMenuOpen && (
-            <div className="dropdown-menu">
+            <>
+              <div className="dimmedLayer" ></div>
+              <div className="dropdown-menu" onMouseLeave={closeMenu}>
                 <div className="sign-in-container">
                   <Link to="/login" className="sign-in-button-dropdown">
                     Sign In
@@ -58,7 +63,8 @@ function ProfileButton({ user }) {
                     Start Here.
                   </Link>
                 </div>
-            </div>
+              </div>
+            </>
           )}
         </>
       )}
