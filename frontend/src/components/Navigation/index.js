@@ -7,7 +7,7 @@ import logo from '../../imgs/logoImgs/canal-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import SecondNavBar from '../SecondNavBar/index.js';
-import ProductListings from '../ProductListings/index.js';
+import SplashListings from '../SplashListings/index.js';
 import Footer from '../Footer/index.js';
 import { Link } from 'react-router-dom';
 
@@ -69,7 +69,7 @@ function Navigation() {
             </div>
       </header>
       <SecondNavBar />
-      <ProductListings />
+      <SplashListings />
       <Footer />
     </div>
   );

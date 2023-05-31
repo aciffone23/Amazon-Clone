@@ -20,6 +20,7 @@ function App() {
         <Route path="/" element={renderNavigation && <Navigation />} />
         <Route path="/login" element={<LoginFormPage />} />
         <Route path="/signup" element={<SignupFormPage />} />
+        <Route path="/products" element={renderNavigation && <Navigation />}  />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
