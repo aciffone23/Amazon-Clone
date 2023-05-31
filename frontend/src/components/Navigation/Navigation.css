@@ -71,6 +71,15 @@
     border: 1px solid #ddd;
 }
 
+.links a {
+    color: #fff;
+    font-size: 40px;
+    text-decoration: none;
+    padding: 10px;
+} 
+.links a:hover {
+    border: 1px solid #ddd;
+} 
 
 
 body {

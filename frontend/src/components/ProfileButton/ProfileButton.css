@@ -1,6 +1,7 @@
 .profile-button {
     position: relative;
     display: inline-block;
+    padding: 20px;
   }
 
 .profile-button:hover {

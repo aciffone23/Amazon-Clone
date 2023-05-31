@@ -3,6 +3,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import LoginFormPage from './components/LoginForm';
 import SignupFormPage from './components/SignupForm';
 import Navigation from './components/Navigation';
+import { Navigate } from 'react-router-dom';
+
 import './index.css'
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
         <Route path="/" element={renderNavigation && <Navigation />} />
         <Route path="/login" element={<LoginFormPage />} />
         <Route path="/signup" element={<SignupFormPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );

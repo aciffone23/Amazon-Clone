@@ -9,6 +9,8 @@ import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import SecondNavBar from '../SecondNavBar/index.js';
 import ProductListings from '../ProductListings/index.js';
 import Footer from '../Footer/index.js';
+import { Link } from 'react-router-dom';
+
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -37,7 +39,14 @@ function Navigation() {
                 <FontAwesomeIcon icon={faSearch} />
                 </button>
             </div>
-            {/* <div className="right-side-nav">  */}
+            <div className="links">
+                    <Link to="https://github.com/aciffone23/Amazon-Clone/wiki">
+                        <i className="fab fa-github-square"></i>
+                    </Link>
+                    <Link to="https://www.linkedin.com/in/angelo-ciffone-8a8645248/">
+                        <i className="fab fa-linkedin"></i>
+                    </Link>
+                </div>
             <div
                 className="session-links"
                 onMouseEnter={handleMouseEnter}
