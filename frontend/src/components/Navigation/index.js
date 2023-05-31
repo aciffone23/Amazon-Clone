@@ -37,7 +37,7 @@ function Navigation() {
                 <FontAwesomeIcon icon={faSearch} />
                 </button>
             </div>
-            <div className="right-side-nav"> {/* New grouped div */}
+            {/* <div className="right-side-nav">  */}
             <div
                 className="session-links"
                 onMouseEnter={handleMouseEnter}
@@ -45,26 +45,19 @@ function Navigation() {
             >
                 <ProfileButton user={sessionUser} />
                 {showDropdown && sessionUser && (
-                <div className="dropdown-menu">
-                    {/* Dropdown menu content */}
-                </div>
+                <div className="dropdown-menu"/>
                 )}
             </div>
-            <div>
                 <NavLink to="/returns-orders" className="placeholder-link">
-                    Returns
-                    <br/>
-                    & Orders
+                    Orders
                 </NavLink>
                 <FontAwesomeIcon
                     className="cart-icon"
                     icon={faShoppingCart}
                     size="2x" 
                     style={{ color: "#ffffff" }}
-            />
+                />
             </div>
-          </div> 
-        </div>
       </header>
       <SecondNavBar />
       <ProductListings />
