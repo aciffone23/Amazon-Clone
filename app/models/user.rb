@@ -4,11 +4,19 @@ class User < ApplicationRecord
     validates :name, :email, :session_token, presence: true, uniqueness: true
     validates :name, length: {in: 3..30}
     validate :first_and_last_name_present
-    validates :email, length: {in: 3..255}
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+    validates :email, length: {in: 3..255}
     validates :password, length: { minimum: 6 }, allow_nil: true
+    validate :password_length, on: :create
+
 
     before_validation :ensure_session_token
+
+    def password_length
+        if password.present? && password.length < 6
+            errors.add(:password, 'must be at least 6 characters long')
+        end
+    end
 
     def ensure_session_token
         self.session_token ||= generate_unique_session_token
