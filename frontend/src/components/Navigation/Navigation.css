@@ -18,6 +18,7 @@
 .logo {
     width: 100px;
     padding: 10px;
+    border: 1px solid transparent;
 }
 
 .logo:hover{
@@ -57,6 +58,9 @@
     color: white;
     text-decoration: none;
     padding: 20px;
+    border: 1px solid transparent;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .placeholder-link:hover {
@@ -65,6 +69,7 @@
 
 .cart-icon {
     padding: 20px;
+    border: 1px solid transparent;
 }
 
 .cart-icon:hover {
@@ -76,6 +81,8 @@
     font-size: 40px;
     text-decoration: none;
     padding: 10px;
+    border: 1px solid transparent;
+    margin-right: 5px;
 } 
 .links a:hover {
     border: 1px solid #ddd;
