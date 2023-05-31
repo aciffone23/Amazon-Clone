@@ -44,7 +44,7 @@ ApplicationRecord.transaction do
 
     Product.create!(
         brand: 'Ray-Ban',
-        name: 'Ray-Ban Aviators',
+        name: 'Ray-Ban Aviator',
         description: 'Metal
         Imported
         Metal frame

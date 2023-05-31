@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from '../ProfileButton/index.js';
 import './Navigation.css';
-import logo from '../../imgs/canal-logo.png';
+import logo from '../../imgs/logoImgs/canal-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import SecondNavBar from '../SecondNavBar/index.js';

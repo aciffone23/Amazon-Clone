@@ -1,12 +1,12 @@
 import './ProductListings.css'
-import shoes from '../../imgs/shoes.png'
-import sunglasses from '../../imgs/sunglasses.png'
-import bags from '../../imgs/bags.png'
-import books from '../../imgs/books.png'
-import watch from '../../imgs/watch.png'
-import games from '../../imgs/games.png'
-import clothes from '../../imgs/clothes.png'
-import electronics from '../../imgs/electronics.png'
+import shoes from '../../imgs/splashImgs/shoes.png'
+import sunglasses from '../../imgs/splashImgs/sunglasses.png'
+import bags from '../../imgs/splashImgs/bags.png'
+import books from '../../imgs/splashImgs/books.png'
+import watch from '../../imgs/splashImgs/watch.png'
+import games from '../../imgs/splashImgs/games.png'
+import clothes from '../../imgs/splashImgs/clothes.png'
+import electronics from '../../imgs/splashImgs/electronics.png'
 import { Link } from 'react-router-dom';
 
 

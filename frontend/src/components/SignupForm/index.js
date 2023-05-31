@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
-import logo from '../../imgs/canal-logo-white.png'
+import logo from '../../imgs/logoImgs/canal-logo-white.png'
 
 
 
