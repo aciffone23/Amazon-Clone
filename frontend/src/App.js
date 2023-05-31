@@ -8,7 +8,7 @@ import './index.css'
 
 function App() {
   const location = useLocation();
-  const shouldApplyBackground = location.pathname !== '/login' && location.pathname !== '/signup';
+  const shouldApplyBackground = location.pathname === '/';
 
 
   const restrictedPaths = ['/login', '/signup'];
