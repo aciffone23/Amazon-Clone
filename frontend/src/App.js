@@ -4,7 +4,6 @@ import LoginFormPage from './components/LoginForm';
 import SignupFormPage from './components/SignupForm';
 import Navigation from './components/Navigation';
 import { Navigate } from 'react-router-dom';
-
 import './index.css'
 
 function App() {
