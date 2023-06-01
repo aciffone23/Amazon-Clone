@@ -31,20 +31,16 @@ function SignupFormPage() {
     if (password === confirmPassword) {
       return dispatch(sessionActions.signup({ email, name, password }))
         .catch(async (res) => {
-        console.log(res)
         let data;
         try {
             
           // .clone() essentially allows you to read the response body twice
-        //   console.log(data?.errors)
           data = await res.clone().json();
         } catch {
             data = await res.text(); // Will hit this case if the server is down
-            console.log(data)
         }
         if (data?.errors) {
             let newErrors = { email: "", name: "", password: "", confirmPassword: ""}
-            console.log(data?.errors)
             data.errors.forEach((error) => {
                 if (error.includes("Email"))  newErrors.email = error;
                 else if (error.includes("name")) newErrors.name = error;
