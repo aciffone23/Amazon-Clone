@@ -34,13 +34,15 @@ export const getProduct = (productId) => {
     }
 }
 
-export const fetchProducts = () => async dispatch => {
-    const response = await csrfFetch("/api/products") 
+export const fetchProducts = (category) => async (dispatch) => {
+    const url = category ? `/api/products?category=${category}` : '/api/products';
+    const response = await csrfFetch(url);
     if (response.ok) {
-        const data = await response.json()
-        dispatch(receiveProducts(data))
+      const data = await response.json();
+      dispatch(receiveProducts(data));
     }
-}
+  };
+  
 export const fetchProduct = (productId) => async dispatch => {
     const response = await csrfFetch(`/api/products/${productId}`)
     if (response.ok) {

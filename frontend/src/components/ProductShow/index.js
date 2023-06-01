@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchProduct, getProduct } from '../../store/product';
-import { useLocation } from 'react-router-dom';
 import './ProductShow.css'
 import Shoes from '../../imgs/productImgs/Shoes.png'
 import Glasses from '../../imgs/productImgs/Glasses.png'
@@ -17,13 +16,9 @@ const ProductShow = () => {
     let dispatch = useDispatch();
     let { id } = useParams();
     let product = useSelector(getProduct(id));
-    let location = useLocation()
     
     useEffect(() => {
-        if (location.pathname.startsWith('/products/')) {
-            dispatch(fetchProduct(id));
-            console.log(id)
-        }
+        dispatch(fetchProduct(id));
     }, [dispatch, id]);
     
     if (!product) {

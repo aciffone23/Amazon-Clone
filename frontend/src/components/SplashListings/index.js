@@ -7,16 +7,12 @@ import watch from '../../imgs/splashImgs/watch.png'
 import games from '../../imgs/splashImgs/games.png'
 import clothes from '../../imgs/splashImgs/clothes.png'
 import electronics from '../../imgs/splashImgs/electronics.png'
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
 function SplashListings () {
-    const location = useLocation();
-
-    if (location.pathname !== '/') {
-        return null
-    }
+    
     return (
     <div className="splash-listing">
         <Link to="/shoes" className="splash-box">

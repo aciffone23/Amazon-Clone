@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:create, :show, :destroy]
     resources :products, only: [:index, :show]
+
+    get '/products/category/:category', to: 'products#index', as: 'category_products'
   end
 end

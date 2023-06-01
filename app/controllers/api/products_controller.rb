@@ -1,6 +1,11 @@
 class Api::ProductsController < ApplicationController
     def index 
-        @products = Product.all
+        if params[:category].present?
+          category = params[:category].downcase
+          @products = Product.where('LOWER(category) = ?', category)
+        else
+          @products = Product.all
+        end
         render 'api/products/index'
     end
 

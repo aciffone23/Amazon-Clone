@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link , useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchProducts, getProducts } from '../../store/product';
 import './ProductListings.css'
 import Shoes from '../../imgs/productImgs/Shoes.png'
@@ -17,15 +17,9 @@ import Electronics from '../../imgs/productImgs/Electronics.png'
 const ProductListings = () => {
     let dispatch = useDispatch()
     let products = useSelector(getProducts)
-    let location = useLocation()
-
     useEffect(() => {
         dispatch(fetchProducts())
-    }, [])
-
-    if (location.pathname !== '/products') {
-        return null
-    }
+    },[dispatch])
 
     const getCategoryImage = (category) => {
         switch (category) {

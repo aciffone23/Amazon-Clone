@@ -10,7 +10,7 @@ function SecondNavBar () {
                 <NavLink to="/products">All Products</NavLink>
             </li>   
             <li>
-                <NavLink to="/shoes">Shoes</NavLink>
+                <NavLink to="/products/shoes">Shoes</NavLink>
             </li>
             <li>
                 <NavLink to="/glasses">Glasses</NavLink>
