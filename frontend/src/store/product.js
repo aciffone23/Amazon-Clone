@@ -13,7 +13,24 @@ const receiveProducts = products => {
 const receiveProduct = product => {
     return {
         type: RECEIVE_PRODUCT,
-        payload: product
+        product
+    }
+}
+
+export const getProducts = (state) => {
+    if (state.products) {
+        return Object.values(state.products)
+    } else {
+        return []
+    }
+}
+export const getProduct = (productId) => {
+    return (state) => {
+        if (state.products) {
+            return state.products[productId]
+        } else {
+            return null
+        }
     }
 }
 
@@ -36,9 +53,9 @@ const productReducer = (state = {}, action) => {
     let newState = {...state}
     switch (action.type) {
         case RECEIVE_PRODUCTS:
-            return {...state, ...action.products}
+            return {...newState, ...action.products}
         case RECEIVE_PRODUCT:
-            newState[action.payload.product.id] = action.payload.product
+            newState[action.product.id] = action.product
             return newState
         default:
             return state
