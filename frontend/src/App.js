@@ -12,8 +12,8 @@ function App() {
   const shouldApplyBackground = location.pathname === '/';
 
 
-  const restrictedPaths = ['/login', '/signup'];
-  const renderNavigation = !restrictedPaths.includes(location.pathname);
+  const renderNavigation = !location.pathname.startsWith('/login') && !location.pathname.startsWith('/signup');
+
 
   return (
     <div className={`container ${shouldApplyBackground ? 'with-background' : ''}`}>

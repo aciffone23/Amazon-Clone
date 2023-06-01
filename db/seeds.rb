@@ -175,7 +175,7 @@ ApplicationRecord.transaction do
         ',
         dimensions: ' 6.69 x 5.35 x 0.55 inches; 2.4 Ounces',
         category: 'Video Games',
-        price: 74.99
+        price: 9.99
     )
     Product.create!(
         brand: 'Supreme',

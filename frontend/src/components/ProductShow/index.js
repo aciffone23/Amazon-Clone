@@ -14,15 +14,12 @@ const ProductShow = () => {
   useEffect(() => {
     if (location.pathname.startsWith('/products/')) {
       dispatch(fetchProduct(id));
+      console.log(id)
     }
   }, [dispatch, id, location.pathname]);
 
   if (!location.pathname.startsWith('/products/')) {
     return null;
-  }
-
-  if (!product) {
-    return <div>Loading...</div>;
   }
 
   return (
