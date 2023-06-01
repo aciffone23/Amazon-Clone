@@ -5,6 +5,7 @@ import SignupFormPage from './components/SignupForm';
 import Navigation from './components/Navigation';
 import { Navigate } from 'react-router-dom';
 import './index.css'
+// import ProductShow from './components/ProductShow';
 
 function App() {
   const location = useLocation();
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<LoginFormPage />} />
         <Route path="/signup" element={<SignupFormPage />} />
         <Route path="/products" element={renderNavigation && <Navigation />}  />
+        <Route path="/products/:id" element={renderNavigation && <Navigation />}  />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>

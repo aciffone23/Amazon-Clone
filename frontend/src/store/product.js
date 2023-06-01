@@ -50,6 +50,7 @@ export const fetchProduct = (productId) => async dispatch => {
 }
 
 const productReducer = (state = {}, action) => {
+    Object.freeze(state)
     let newState = {...state}
     switch (action.type) {
         case RECEIVE_PRODUCTS:

@@ -19,13 +19,16 @@ const ProductListings = () => {
     let products = useSelector(getProducts)
     let location = useLocation()
     
+    
     useEffect(() => {
-        dispatch(fetchProducts())
-    },[dispatch])
+        if (location.pathname === '/products') {
+            dispatch(fetchProducts())
+        }
+    },[dispatch, location.pathname])
 
-    if (location.pathname === '/') {
+    if (location.pathname !== '/products') {
         return null
-    }
+    } 
 
     const getCategoryImage = (category) => {
         switch (category) {

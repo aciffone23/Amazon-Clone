@@ -11,6 +11,7 @@ import SplashListings from '../SplashListings/index.js';
 import Footer from '../Footer/index.js';
 import { Link } from 'react-router-dom';
 import ProductListings from '../ProductListings/index.js';
+import ProductShow from '../ProductShow/index.js';
 
 
 function Navigation() {
@@ -72,6 +73,7 @@ function Navigation() {
       <SecondNavBar />
       <SplashListings />
       <ProductListings/>
+      <ProductShow/>
       <Footer />
     </div>
   );
