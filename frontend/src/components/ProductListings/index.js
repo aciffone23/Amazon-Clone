@@ -20,10 +20,8 @@ const ProductListings = () => {
     let location = useLocation()
 
     useEffect(() => {
-        if (location.pathname === '/products') {
-            dispatch(fetchProducts())
-        }
-    },[dispatch, location.pathname])
+        dispatch(fetchProducts())
+    }, [])
 
     if (location.pathname !== '/products') {
         return null
@@ -54,17 +52,37 @@ const ProductListings = () => {
     
 
     return (
-        <div className="product-listings">
-            {products.map((product) => (
-            <Link to={`/products/${product.id}`} key={product.id} className="product-box">
-          <img src={`${getCategoryImage(product.category)}`} alt={product.name} className="product-image" />
-          <span className="product-brand">{product.brand}</span>
-          <span className="product-name">{product.name}</span>
-          <span className="product-review">Review placeholder</span>
-          <span className="product-price">${product.price}</span>
+    //     <div className="product-listings">
+    //         {products.map((product) => (
+    //         <Link to={`/products/${product.id}`} key={product.id} className="product-box">
+    //       <img src={`${getCategoryImage(product.category)}`} alt={product.name} className="product-image" />
+    //       <span className="product-brand">{product.brand}</span>
+    //       <span className="product-name">{product.name}</span>
+    //       <span className="product-review">Review placeholder</span>
+    //       <span className="product-price">${product.price}</span>
+    //     </Link>
+    //   ))}
+    // </div>
+    <div className="product-listings">
+    {products.map((product) => {
+      const price = product.price.toFixed(2); // Convert the price to a fixed two decimal places (e.g., 10.99)
+      const [dollars, cents] = price.split('.'); // Split the price into dollars and cents parts
+      
+      return (
+        <Link to={`/products/${product.id}`} key={product.id} className="product-box">
+            <img src={`${getCategoryImage(product.category)}`} alt={product.name} className="product-image" />
+            <span className="product-brand">{product.brand}</span>
+            <span className="product-name">{product.name}</span>
+            <span className="product-review">Review placeholder</span>
+            <span className="product-price">
+            <span className="product-price-dollar">$</span>
+            <span className="product-price-show">{dollars}</span>
+            <span className="product-price-cents">{cents}</span>
+          </span>
         </Link>
-      ))}
-    </div>
+      );
+    })}
+  </div>
     )
 }
 

@@ -5,6 +5,7 @@ import SignupFormPage from './components/SignupForm';
 import Navigation from './components/Navigation';
 import { Navigate } from 'react-router-dom';
 import './index.css'
+import ProductShow from './components/ProductShow';
 // import ProductShow from './components/ProductShow';
 
 function App() {
