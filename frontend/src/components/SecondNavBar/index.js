@@ -10,28 +10,28 @@ function SecondNavBar () {
                 <NavLink to="/products">All Products</NavLink>
             </li>   
             <li>
-                <NavLink to="/products/shoes">Shoes</NavLink>
+                <NavLink to="/products/category/shoes">Shoes</NavLink>
             </li>
             <li>
-                <NavLink to="/glasses">Glasses</NavLink>
+                <NavLink to="/products/category/glasses">Glasses</NavLink>
             </li>
             <li>
-                <NavLink to="/bags">Bags</NavLink>
+                <NavLink to="/products/category/bags">Bags</NavLink>
             </li>
             <li>
-                <NavLink to="/electronics">Electronics</NavLink>
+                <NavLink to="/products/category/electronics">Electronics</NavLink>
             </li>
             <li>
-                <NavLink to="/books">Books</NavLink>
+                <NavLink to="/products/category/books">Books</NavLink>
             </li>
             <li>
-                <NavLink to="/watches">Watches</NavLink>
+                <NavLink to="/products/category/watches">Watches</NavLink>
             </li>
             <li>
-                <NavLink to="/video_games">Video Games</NavLink>
+                <NavLink to="/products/category/games">Games</NavLink>
             </li>
             <li>
-                <NavLink to="/clothes">Clothes</NavLink>
+                <NavLink to="/products/category/clothes">Clothes</NavLink>
             </li>
             </ul>
         </nav>

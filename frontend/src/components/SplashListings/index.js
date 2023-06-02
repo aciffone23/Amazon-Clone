@@ -15,37 +15,37 @@ function SplashListings () {
     
     return (
     <div className="splash-listing">
-        <Link to="/shoes" className="splash-box">
+        <Link to="/products/category/shoes" className="splash-box">
             <h4>Shop Shoes</h4>
             <img src={shoes} alt="Shoes" />
         </Link>
-        <Link to="/glasses" className="splash-box">
+        <Link to="/products/category/glasses" className="splash-box">
             <h4>Shop Glasses</h4>
             <img src={sunglasses} alt="Sunglasses" />
         </Link>
-        <Link to="/bags" className="splash-box">
+        <Link to="/products/category/bags" className="splash-box">
             <h4>Shop Bags</h4>
-            <img src={bags} alt="Sunglasses" />
+            <img src={bags} alt="bags" />
         </Link>
-        <Link to="/electronics" className="splash-box">
+        <Link to="/products/category/electronics" className="splash-box">
             <h4>Shop Electronics</h4>
-            <img src={electronics} alt="Sunglasses" />
+            <img src={electronics} alt="electronics" />
         </Link>
-        <Link to="/books" className="splash-box">
+        <Link to="/products/category/books" className="splash-box">
             <h4>Shop Books</h4>
-            <img src={books} alt="Sunglasses" />
+            <img src={books} alt="books" />
         </Link>
-        <Link to="/watches" className="splash-box">
+        <Link to="/products/category/watches" className="splash-box">
             <h4>Shop Watches</h4>
-            <img src={watch} alt="Sunglasses" />
+            <img src={watch} alt="watches" />
         </Link>
-        <Link to="/video_games" className="splash-box">
-            <h4>Shop Video Games</h4>
-            <img src={games} alt="Sunglasses" />
+        <Link to="/products/category/games" className="splash-box">
+            <h4>Shop Games</h4>
+            <img src={games} alt="games" />
         </Link>
-        <Link to="/clothes" className="splash-box">
+        <Link to="/products/category/clothes" className="splash-box">
             <h4>Shop Clothes</h4>
-            <img src={clothes} alt="Sunglasses" />
+            <img src={clothes} alt="clothes" />
         </Link>
     </div>
     )

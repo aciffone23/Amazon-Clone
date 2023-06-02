@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create]
     resource :session, only: [:create, :show, :destroy]
+    get '/products/category/:category', to: 'products#index'
     resources :products, only: [:index, :show]
 
-    get '/products/category/:category', to: 'products#index', as: 'category_products'
-  end
+    end
 end

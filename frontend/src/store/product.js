@@ -24,6 +24,19 @@ export const getProducts = (state) => {
         return []
     }
 }
+
+export const getFilteredProducts = (category) => (state) => {
+    const allProducts = getProducts(state);
+    if (category) {
+      return allProducts.filter((product) =>
+        product.category.toLowerCase().includes(category.toLowerCase())
+      );
+    } else {
+      return allProducts;
+    }
+  };
+
+
 export const getProduct = (productId) => {
     return (state) => {
         if (state.products) {
@@ -34,15 +47,22 @@ export const getProduct = (productId) => {
     }
 }
 
-export const fetchProducts = (category) => async (dispatch) => {
-    const url = category ? `/api/products?category=${category}` : '/api/products';
-    const response = await csrfFetch(url);
+export const fetchAllProducts = () => async (dispatch) => {
+    const response = await csrfFetch('/api/products');
     if (response.ok) {
       const data = await response.json();
       dispatch(receiveProducts(data));
     }
-  };
-  
+};
+
+export const fetchProductsByCategory = (category) => async (dispatch) => {
+    const response = await csrfFetch(`/api/products/category/${category.toLowerCase()}`);
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(receiveProducts(data));
+    }
+};
+
 export const fetchProduct = (productId) => async dispatch => {
     const response = await csrfFetch(`/api/products/${productId}`)
     if (response.ok) {

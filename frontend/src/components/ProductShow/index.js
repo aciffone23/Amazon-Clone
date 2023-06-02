@@ -8,7 +8,7 @@ import Glasses from '../../imgs/productImgs/Glasses.png'
 import Bags from '../../imgs/productImgs/Bags.png'
 import Books from '../../imgs/productImgs/Books.png'
 import Watches from '../../imgs/productImgs/Watches.png'
-import VideoGames from '../../imgs/productImgs/VideoGames.png'
+import Games from '../../imgs/productImgs/Games.png'
 import Clothes from '../../imgs/productImgs/Clothes.png'
 import Electronics from '../../imgs/productImgs/Electronics.png'
 
@@ -39,8 +39,8 @@ const ProductShow = () => {
                 return Books;
             case 'Watches':
                 return Watches;
-            case 'Video Games':
-                return VideoGames;
+            case 'Games':
+                return Games;
             case 'Clothes':
                 return Clothes;
             case 'Electronics':

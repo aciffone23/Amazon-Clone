@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchProducts, getProducts } from '../../store/product';
+import { fetchAllProducts, getFilteredProducts } from '../../store/product';
 import './ProductListings.css'
 import Shoes from '../../imgs/productImgs/Shoes.png'
 import Glasses from '../../imgs/productImgs/Glasses.png'
 import Bags from '../../imgs/productImgs/Bags.png'
 import Books from '../../imgs/productImgs/Books.png'
 import Watches from '../../imgs/productImgs/Watches.png'
-import VideoGames from '../../imgs/productImgs/VideoGames.png'
+import Games from '../../imgs/productImgs/Games.png'
 import Clothes from '../../imgs/productImgs/Clothes.png'
 import Electronics from '../../imgs/productImgs/Electronics.png'
 
@@ -16,9 +16,10 @@ import Electronics from '../../imgs/productImgs/Electronics.png'
 
 const ProductListings = () => {
     let dispatch = useDispatch()
-    let products = useSelector(getProducts)
+    let products = useSelector(getFilteredProducts())
+
     useEffect(() => {
-        dispatch(fetchProducts())
+        dispatch(fetchAllProducts())
     },[dispatch])
 
     const getCategoryImage = (category) => {
@@ -33,8 +34,8 @@ const ProductListings = () => {
             return Books;
           case 'Watches':
             return Watches;
-          case 'Video Games':
-            return VideoGames;
+          case 'Games':
+            return Games;
           case 'Clothes':
             return Clothes;
           case 'Electronics':

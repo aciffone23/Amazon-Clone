@@ -1,13 +1,16 @@
 class Api::ProductsController < ApplicationController
     def index 
+        Rails.logger.info("Category: #{params[:category]}")
         if params[:category].present?
-          category = params[:category].downcase
-          @products = Product.where('LOWER(category) = ?', category)
+            @products = Product.where('category LIKE ?', "%#{params[:category]}%")
         else
-          @products = Product.all
+            @products = Product.all
         end
+    
         render 'api/products/index'
     end
+
+    
 
     def show 
         @product = Product.find(params[:id])

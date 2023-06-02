@@ -174,7 +174,7 @@ ApplicationRecord.transaction do
         Inc. Diablo, Diablo Immortal, World of Warcraft, and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. in the U.S and/or other countries. All rights reserved.
         ',
         dimensions: ' 6.69 x 5.35 x 0.55 inches; 2.4 Ounces',
-        category: 'Video Games',
+        category: 'Games',
         price: 9.99
     )
     Product.create!(
