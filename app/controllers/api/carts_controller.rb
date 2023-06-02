@@ -5,15 +5,15 @@ class Api::CartsController < ApplicationController
     @cart = current_user.cart
   end
 
-  def update
-    @cart = current_user.cart
-    if @cart.update(cart_params)
-      redirect_to cart_path, notice: 'Cart updated successfully.'
-    else
-      flash.now[:alert] = 'Failed to update cart.'
-      render 'api/cart/show'
-    end
-  end
+#   def update
+#     @cart = current_user.cart
+#     if @cart.update(cart_params)
+#       redirect_to cart_path, notice: 'Cart updated successfully.'
+#     else
+#       flash.now[:alert] = 'Failed to update cart.'
+#       render 'api/cart/show'
+#     end
+#   end
 
   
   private

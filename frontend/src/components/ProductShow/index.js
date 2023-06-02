@@ -79,6 +79,9 @@ const ProductShow = () => {
             <span className="product-price-dollar">$</span>
             <span className="product-price-show">{dollars}</span>
             <span className="product-price-cents">{cents}</span>
+            <h4>No Returns</h4>
+            <h4>Free Delivery</h4>
+            <h5 className="stock">In Stock</h5>
             <p>(qty dropdown placeholder)</p>
             <button className="add-to-cart-btn">Add to Cart</button>
         </div>
