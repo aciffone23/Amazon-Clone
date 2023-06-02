@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import {  fetchAllProducts, getFilteredProducts } from '../../store/product';
-import './CategoryListings.css';
 import Shoes from '../../imgs/productImgs/Shoes.png'
 import Glasses from '../../imgs/productImgs/Glasses.png'
 import Bags from '../../imgs/productImgs/Bags.png'

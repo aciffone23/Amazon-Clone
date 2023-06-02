@@ -11,6 +11,11 @@ class User < ApplicationRecord
 
 
     before_validation :ensure_session_token
+    
+    has_one :cart
+    has_many :products, through: :carts
+
+
 
     def password_length
         if password.present? && password.length < 6

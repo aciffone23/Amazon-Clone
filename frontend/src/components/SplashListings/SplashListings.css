@@ -1,12 +1,13 @@
 .splash-listing {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
-    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding-bottom: 40px;
-    margin: 150px;
+    margin: 100px;
+    gap: 25px;
 }
   
 .splash-box {
