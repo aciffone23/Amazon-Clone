@@ -5,7 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-ApplicationRecord.transaction do 
+require "open-uri"
+
+# ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
@@ -14,35 +16,42 @@ ApplicationRecord.transaction do
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
     ApplicationRecord.connection.reset_pk_sequence!('products')
-  
+
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
     User.create!(
-      name: 'Angelo Ciffone', 
-      email: 'testuser@gmail.com', 
-      password: 'password'
+    name: 'Angelo Ciffone', 
+    email: 'testuser@gmail.com', 
+    password: 'password'
     )
     User.create!(
-      name: 'Demo User', 
-      email: 'demouser@gmail.com', 
-      password: 'password'
+    name: 'Demo User', 
+    email: 'demouser@gmail.com', 
+    password: 'password'
     )
 
-    Product.create!(
-        brand: 'Nike',
-        name: 'Air Jordan 6',
-        description: 'Rubber sole
-        The Air Jordan 6 “DMP 2020” is a Winter 2020 re-release of the classic “Defining Moments Pack” that first appeared in 2006
-        One of the most celebrated and coveted two-shoe sets ever from Jordan Brand, the Defining Moments Pack celebrated Michael Jordan’s first NBA Championship and contains an Air Jordan 6 and Air Jordan 11, both of which sport a premium redesign
-        The Air Jordan 6 features a stealthy black nubuck upper with a gold-accented Jumpman on the tongue and gold trim on the midsole that provides a touch of opulent styling
-        For 2020, Jordan Brand opted to bring back the Jordan 6 from the original pack in all its glory
-        Release date: April 2020',
-        dimensions: '14 x 10 x 5 inches; 1.2 Pounds',
-        category: 'Shoes',
-        price: 49.99
-    )
+    product1 = Product.create!(
+            brand: 'Nike',
+            name: 'Air Jordan 6',
+            description: 'Rubber sole
+            The Air Jordan 6 “DMP 2020” is a Winter 2020 re-release of the classic “Defining Moments Pack” that first appeared in 2006
+            One of the most celebrated and coveted two-shoe sets ever from Jordan Brand, the Defining Moments Pack celebrated Michael Jordan’s first NBA Championship and contains an Air Jordan 6 and Air Jordan 11, both of which sport a premium redesign
+            The Air Jordan 6 features a stealthy black nubuck upper with a gold-accented Jumpman on the tongue and gold trim on the midsole that provides a touch of opulent styling
+            For 2020, Jordan Brand opted to bring back the Jordan 6 from the original pack in all its glory
+            Release date: April 2020',
+            dimensions: '14 x 10 x 5 inches; 1.2 Pounds',
+            category: 'Shoes',
+            price: 49.99
+        )
 
-    Product.create!(
+    
+    file = URI.open('https://canal-seeds.s3.amazonaws.com/jordan1.jpeg')
+    attachment_result = product1.photo.attach(io: file, filename: 'jordan1.jpeg')
+
+    # file = URI.open('https://canal-seeds.s3.amazonaws.com/jordan1.jpeg')
+    # product1.photo.attach(io: file, filename: 'jordan1.jpeg')
+
+    product2 = Product.create!(
         brand: 'Ray-Ban',
         name: 'Ray-Ban Aviator',
         description: 'Metal
@@ -67,7 +76,11 @@ ApplicationRecord.transaction do
         category: 'Glasses',
         price: 34.99
     )
-    Product.create!(
+
+    file = URI.open('https://canal-seeds.s3.amazonaws.com/RayBan.jpg')
+    product2.photo.attach(io: file, filename: 'Ray Ban')
+
+    product3 = Product.create!(
         brand: 'Gucci',
         name: 'Gucci Soho Medium',
         description: 'Leather
@@ -83,7 +96,11 @@ ApplicationRecord.transaction do
         category: 'Bags',
         price: 54.99
     )
-    Product.create!(
+
+    file = URI.open('https://canal-seeds.s3.amazonaws.com/GucciBag.jpeg')
+    product3.photo.attach(io: file, filename: 'Gucci Bag')
+
+    product4 = Product.create!(
         brand: 'LG',
         name: 'LG Signature 88-inch Class OLED Z2 Series 8K',
         description: '8K RESOLUTION: Experience our 8K OLED screen to bring your content to life like never before with the sharpest, most vivid resolution ever in an OLEDExperience our 8K OLED screen to bring your content to life like never before with the sharpest, most vivid resolution ever in an OLED
@@ -94,7 +111,11 @@ ApplicationRecord.transaction do
         category: 'Electronics',
         price: 125.99
     )
-    Product.create!(
+
+    file = URI.open('https://canal-seeds.s3.amazonaws.com/oled88.jpg')
+    product4.photo.attach(io: file, filename: 'Oled 88')
+
+    product5 = Product.create!(
         brand: 'Marvel',
         name: 'The Amazing Spider-Man: 1962–1964',
         description: '
@@ -122,7 +143,11 @@ ApplicationRecord.transaction do
         category: 'Books',
         price: 9.99
     )
-    Product.create!(
+
+    file = URI.open('https://canal-seeds.s3.amazonaws.com/spiderMan.jpg')
+    product5.photo.attach(io: file, filename: 'Spiderman Book')
+
+    product6 = Product.create!(
         brand: 'Rolex',
         name: 'Rolex Submariner Automatic-self-Wind Male Watch',
         description: '
@@ -163,7 +188,11 @@ ApplicationRecord.transaction do
         category: 'Watches',
         price: 74.99
     )
-    Product.create!(
+
+    file = URI.open('https://canal-seeds.s3.amazonaws.com/Rolex.jpg')
+    product6.photo.attach(io: file, filename: 'Rolex')
+
+    product7 = Product.create!(
         brand: 'Blizzard',
         name: 'Diablo IV',
         description: '
@@ -177,7 +206,11 @@ ApplicationRecord.transaction do
         category: 'Games',
         price: 9.99
     )
-    Product.create!(
+    
+    file = URI.open('https://canal-seeds.s3.amazonaws.com/Diablo4.jpg')
+    product7.photo.attach(io: file, filename: 'Diablo4')
+    
+    product8 = Product.create!(
         brand: 'Supreme',
         name: 'Supreme T-Shirt',
         description: '
@@ -187,15 +220,20 @@ ApplicationRecord.transaction do
         category: 'Clothes',
         price: 2.99
     )
-  
+    
+    file = URI.open('https://canal-seeds.s3.amazonaws.com/supremeShirt.png')
+    product8.photo.attach(io: file, filename: 'supreme')
+
+
     # More users
     10.times do 
-      User.create!({
+    User.create!({
         name: Faker::Name.unique.name,
         email: Faker::Internet.unique.email,
         password: 'password'
-      }) 
+    }) 
     end
-  
+
     puts "Done!"
-  end
+# end
+

@@ -3,14 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchProduct, getProduct } from '../../store/product';
 import './ProductShow.css'
-import Shoes from '../../imgs/productImgs/Shoes.png'
-import Glasses from '../../imgs/productImgs/Glasses.png'
-import Bags from '../../imgs/productImgs/Bags.png'
-import Books from '../../imgs/productImgs/Books.png'
-import Watches from '../../imgs/productImgs/Watches.png'
-import Games from '../../imgs/productImgs/Games.png'
-import Clothes from '../../imgs/productImgs/Clothes.png'
-import Electronics from '../../imgs/productImgs/Electronics.png'
 
 const ProductShow = () => {
     let dispatch = useDispatch();
@@ -27,65 +19,56 @@ const ProductShow = () => {
     const price = product.price.toFixed(2); 
     const [dollars, cents] = price.split('.');
 
-    const getCategoryImage = (category) => {
-        switch (category) {
-            case 'Shoes':
-                return Shoes;
-            case 'Glasses':
-                return Glasses;
-            case 'Bags':
-                return Bags;
-            case 'Books':
-                return Books;
-            case 'Watches':
-                return Watches;
-            case 'Games':
-                return Games;
-            case 'Clothes':
-                return Clothes;
-            case 'Electronics':
-                return Electronics;
-            default:
-                return null;
-        }
-    };
-
   return (
-    <div className="product-show">
-        <div className="product-image-box">
-            <div className="product-image-show">
-                <img src={`${getCategoryImage(product.category)}`} alt={product.name} />
+    <div className="products-container">
+        <div className="product-show">
+            <div className="product-image-box">
+                <div className="product-image-show">
+                    <img src={product.photoUrl} alt={product.name} />
+                </div>
+            </div>
+            <div className="product-details-show">
+                <h2 className="product-name-show">{product.name}</h2>
+                <h1 className="product-brand-show">{product.brand}</h1>
+                <p>(rating placeholder)</p>
+                <div>
+                    <hr>
+                    </hr>
+                </div>
+                <span className="product-price-dollar">$</span>
+                <span className="product-price-show">{dollars}</span>
+                <span className="product-price-cents">{cents}</span>
+                <h5 className="product-description-show">{product.description}</h5>
+                <ul className="product-info-show">
+                </ul>
+            </div>
+            <div className="cart-container">
+                <h5>Buy new:</h5>
+                <span className="product-price-dollar">$</span>
+                <span className="product-price-show">{dollars}</span>
+                <span className="product-price-cents">{cents}</span>
+                <h4>No Returns</h4>
+                <h4>Free Delivery</h4>
+                <h5 className="stock">In Stock</h5>
+                <p>(qty dropdown placeholder)</p>
+                <button className="add-to-cart-btn">Add to Cart</button>
             </div>
         </div>
-        <div className="product-details-show">
-            <h2 className="product-name-show">{product.name}</h2>
-            <h1 className="product-brand-show">{product.brand}</h1>
-            <p>(rating placeholder)</p>
+        <div className="product-details-box">
             <div>
                 <hr>
                 </hr>
             </div>
-            <span className="product-price-dollar">$</span>
-            <span className="product-price-show">{dollars}</span>
-            <span className="product-price-cents">{cents}</span>
-            <h5 className="product-description-show">{product.description}</h5>
-            <ul className="product-info-show">
-            <li>Dimensions: {product.dimensions}</li>
-            <li>Category: {product.category}</li>
-            </ul>
-        </div>
-        <div className="cart-container">
-            <h5>Buy new:</h5>
-            <span className="product-price-dollar">$</span>
-            <span className="product-price-show">{dollars}</span>
-            <span className="product-price-cents">{cents}</span>
-            <h4>No Returns</h4>
-            <h4>Free Delivery</h4>
-            <h5 className="stock">In Stock</h5>
-            <p>(qty dropdown placeholder)</p>
-            <button className="add-to-cart-btn">Add to Cart</button>
+            <div className="product-details">
+                <h1>Product Details</h1>
+                <p><span className="details-label">Dimensions:</span> {product.dimensions}</p>
+                <p><span className="details-label">Category:</span> {product.category}</p>
+                <p><span className="details-label">Brand:</span> {product.brand}</p>
+                <p><span className="details-label">Customer Reviews:</span> (review placeholder)</p>
+            </div>
         </div>
     </div>
+
   );
 
 };
