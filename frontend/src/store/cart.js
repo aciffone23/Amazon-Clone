@@ -121,11 +121,10 @@ const initialState = {
           cartItems: [...state.cartItems, action.payload],
         };
       case REMOVE_CART_ITEM:
-        delete state.cartItems[action.productId]
         return {
           ...state,
-          cartItems: [...state.cartItems, action.payload],
-        }
+          cartItems: state.cartItems.filter((item) => item.product.id !== action.productId),
+        };
       case REMOVE_CART_ITEMS:
         return {
           ...state,
