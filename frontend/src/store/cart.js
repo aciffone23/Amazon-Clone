@@ -20,17 +20,15 @@ export const removeCartItems = (payload) => ({
     payload: payload
 });
 
-export const receiveCartItems = (item) => ({
+export const receiveCartItems = (cartItems) => ({
   type: RECEIVE_CART_ITEMS, 
-  payload: {item}
+  payload: cartItems
 })
 
 export const fetchCart = () => async (dispatch) => {
     const response = await csrfFetch('/api/cart');
     const data = await response.json();
-    data.cartItems.forEach((item) => {
-      dispatch(receiveCartItems(item));
-    })
+      dispatch(receiveCartItems(data));
 };
 
 export const addOrUpdateToCart = (userId, productId, quantity) => async (dispatch) => {
@@ -136,7 +134,7 @@ const initialState = {
       case RECEIVE_CART_ITEMS:
         return {
           ...state,
-          cartItems: [...state.cartItems, action.payload],
+          cartItems: action.payload,
         }
       default:
         return state;
