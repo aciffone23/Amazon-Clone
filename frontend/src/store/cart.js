@@ -123,7 +123,7 @@ const initialState = {
       case REMOVE_CART_ITEM:
         return {
           ...state,
-          cartItems: state.cartItems.filter((item) => item.product.id !== action.productId),
+          cartItems: state.cartItems.filter((item) => item.product && item.product.id !== action.productId),
         };
       case REMOVE_CART_ITEMS:
         return {

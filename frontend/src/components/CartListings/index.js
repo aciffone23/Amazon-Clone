@@ -19,10 +19,6 @@ const CartListings = () => {
     dispatch(fetchCart())
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(addOrUpdateToCart(userId, 4, 2))
-  }, [dispatch]);
-
   const handleQtyChange = (e, productId) => {
     const quantity = e.target.value;
     if (quantity === '0') {
