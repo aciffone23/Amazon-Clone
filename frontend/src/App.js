@@ -10,10 +10,11 @@ import SplashListings from './components/SplashListings';
 import Footer from './components/Footer';
 import ProductListings from './components/ProductListings';
 import CategoryListings from './components/CategoryListings';
+import CartListings from './components/CartListings';
 
 function App() {
   const location = useLocation();
-  const shouldApplyBackground = location.pathname === '/';
+  const shouldApplyBackground = location.path === '/';
   
   return (
     <div className={`container ${shouldApplyBackground ? 'with-background' : ''}`}>
@@ -25,6 +26,7 @@ function App() {
           <Footer />
           </div>} />
         <Route path="/login" element={<LoginFormPage />} />
+        <Route path="/cart" element={<CartListings />} />
         <Route path="/signup" element={<SignupFormPage />} />
         <Route path="/products" element={
           <div>

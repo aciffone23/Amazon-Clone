@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :show, :destroy]
     get '/products/category/:category', to: 'products#index'
     resources :products, only: [:index, :show]
-    resources :carts, only: [:show, :update, :destroy]
+    resource :cart, only: [:create, :show, :update, :destroy]
 
 
-    end
+  end
 end
