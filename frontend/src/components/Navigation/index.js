@@ -59,12 +59,14 @@ function Navigation() {
                 <NavLink to="/returns-orders" className="placeholder-link">
                     Orders
                 </NavLink>
-                <FontAwesomeIcon
-                    className="cart-icon"
-                    icon={faShoppingCart}
-                    size="2x" 
-                    style={{ color: "#ffffff" }}
-                />
+                <Link to="/cart">
+                  <FontAwesomeIcon
+                      className="cart-icon"
+                      icon={faShoppingCart}
+                      size="2x" 
+                      style={{ color: "#ffffff" }}
+                  />
+                </Link>
             </div>
       </header>
       <SecondNavBar />
