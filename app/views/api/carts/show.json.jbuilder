@@ -1,9 +1,5 @@
-json.extract! @cart.user, :id, :name, :email
-json.cart do
-  json.id @cart.id
-  json.quantity @cart.quantity
-  json.products do
-    json.extract! @user.cart.product, :id, :name, :description, :price
-    json.photoUrl url_for(@cart.product.photo)
-  end
+json.cart_items @cart_items do |cart_item|
+  json.id cart_item.id
+  json.quantity cart_item.quantity
+  json.merge! cart_item.product.as_json(only: [:id, :name, :brand, :description, :dimensions, :category, :price])
 end

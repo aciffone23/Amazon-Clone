@@ -15,9 +15,9 @@ class Api::CartsController < ApplicationController
       @user = User.find(params[:user_id])
       render :show
     end
-  
+    
     def show
-      @cart_items = Cart.where(user_id: @user.id)
+      @cart_items = Cart.includes(:product).where(user_id: @user.id)
       render :show
     end
   
@@ -41,7 +41,7 @@ class Api::CartsController < ApplicationController
     private
   
     def set_user
-      @user = User.find_by(id: params[:id])
+      @user = current_user
       render json: { errors: ['User not found'] }, status: :not_found unless @user
     end
   

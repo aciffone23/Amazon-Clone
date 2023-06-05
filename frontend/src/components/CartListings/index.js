@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../store/cart';
+import { addToCart, fetchCart } from '../../store/cart';
 import { fetchAllProducts } from '../../store/product';
 
 const CartListings = () => {
@@ -12,12 +12,16 @@ const CartListings = () => {
 },[dispatch])
 console.log(userId)
 
-useEffect(() => {
-    dispatch(addToCart(userId, 4, 2)); // Example usage of addToCart action
-}, [dispatch]);
-console.log('second')
+// useEffect(() => {
+//     dispatch(addToCart(userId, 4, 2)); // Example usage of addToCart action
+// }, [dispatch]);
+// console.log('second')
   // Rest of your component code...
 
+  useEffect(() => {
+    dispatch(fetchCart())
+},[dispatch])
+console.log(userId)
   return <div>My Component</div>;
 };
 
