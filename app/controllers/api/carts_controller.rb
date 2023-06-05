@@ -1,5 +1,5 @@
 class Api::CartsController < ApplicationController
-    # before_action :require_logged_in
+    before_action :require_logged_in
     before_action :set_user, only: [:show, :destroy]
     # before_action :set_cart, only: [:destroy, :update]
 

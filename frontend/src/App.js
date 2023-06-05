@@ -26,7 +26,6 @@ function App() {
           <Footer />
           </div>} />
         <Route path="/login" element={<LoginFormPage />} />
-        <Route path="/cart" element={<CartListings />} />
         <Route path="/signup" element={<SignupFormPage />} />
         <Route path="/products" element={
           <div>
@@ -46,6 +45,12 @@ function App() {
           <ProductShow />
           <Footer />
           </div>}  />
+        <Route path="/cart" element={
+          <div>
+            <Navigation />
+            <CartListings />
+            <Footer />
+          </div>}/>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>

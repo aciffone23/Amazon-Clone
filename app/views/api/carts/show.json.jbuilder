@@ -1,5 +1,13 @@
-json.cart_items @cart_items do |cart_item|
+json.cart_items @cart_items.map { |cart_item|
   json.id cart_item.id
   json.quantity cart_item.quantity
-  json.merge! cart_item.product.as_json(only: [:id, :name, :brand, :description, :dimensions, :category, :price])
-end
+  json.product do
+    json.id cart_item.product.id
+    json.name cart_item.product.name
+    json.brand cart_item.product.brand
+    json.description cart_item.product.description
+    json.dimensions cart_item.product.dimensions
+    json.category cart_item.product.category
+    json.price cart_item.product.price
+  end
+}
