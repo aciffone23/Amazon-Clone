@@ -1,16 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { fetchProduct, getProduct } from '../../store/product';
 import './ProductShow.css'
 import { addOrUpdateToCart, fetchCart } from '../../store/cart';
+import LoginModal from './Modal';
 
 const ProductShow = () => {
     let dispatch = useDispatch();
     let { id } = useParams();
     let product = useSelector(getProduct(id));
-    const userId = useSelector(state => state.session.user.id);
+    const userId = useSelector(state => state.session.user?.id);
     const [quantity, setQuantity] = useState(1)
+    const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate(); // 
+
+
 
     
     useEffect(() => {
@@ -23,9 +28,20 @@ const ProductShow = () => {
     
 
     const handleAddToCart = () => {
-        dispatch(addOrUpdateToCart(userId, id, quantity))
-          .then(() => dispatch(fetchCart()));
-    };
+        if (!userId) {
+          setShowModal(true);
+          return
+        } else {
+          dispatch(addOrUpdateToCart(userId, id, quantity))
+            .then(() => dispatch(fetchCart()))
+            .then(() => {
+                navigate("/cart"); 
+            });
+        }
+      };
+
+      
+      
       
     
     if (!product) {
@@ -82,11 +98,12 @@ const ProductShow = () => {
                   <option value={9}>Qty: 9</option>
                   <option value={10}>Qty: 10</option>
                 </select>
-                <Link to="/cart" className="button-link">
                     <button className="add-to-cart-btn" onClick={handleAddToCart}>
                         Add to Cart
                     </button>
-                </Link>            
+                {showModal && (
+                <LoginModal onClose={() => setShowModal(false)} />
+                )}          
             </div>
         </div>
         <div className="product-details-box">

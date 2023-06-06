@@ -1,0 +1,56 @@
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #ccc; 
+    padding: 20px;
+  }
+  
+  .modal-content h2{
+    color: black;
+    padding-top: 22px;
+    font-size: 20px;
+  }
+  
+  .modal-content h5 {
+    font-size: 14px;
+    color: black;
+    margin-top: 40px;
+  }
+
+  .close-button {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #000;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .close-button:hover {
+    background-color: lightgray; 
+  }
+
+  
+
+  .modal-content a {
+      color: blue;
+}
+
+.modal-content a:hover {
+    color: purple;
+  }
+  
