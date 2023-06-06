@@ -16,7 +16,6 @@ const CartListings = () => {
   useEffect(() => {
     dispatch(fetchAllProducts())
   }, [dispatch]);
-  console.log(userId);
 
   useEffect(() => {
     dispatch(fetchCart())

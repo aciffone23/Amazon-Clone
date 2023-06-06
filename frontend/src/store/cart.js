@@ -32,7 +32,6 @@ export const fetchCart = () => async (dispatch) => {
 };
 
 export const addOrUpdateToCart = (userId, productId, quantity) => async (dispatch) => {
-  try {
     const response = await csrfFetch('/api/cart', {
       method: 'POST',
       headers: {
@@ -43,15 +42,9 @@ export const addOrUpdateToCart = (userId, productId, quantity) => async (dispatc
     if (response.ok) {
       const data = await response.json();
       dispatch(receiveCartItem(data.productId, data.quantity));
-    } else {
-      throw new Error('Request failed with status ' + response.status);
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
+    } 
 };
 export const removeFromCart = (userId, productId) => async (dispatch) => {
-  try {
     const response = await csrfFetch('/api/cart', {
       method: 'DELETE',
       headers: {
@@ -62,15 +55,9 @@ export const removeFromCart = (userId, productId) => async (dispatch) => {
     });
     if (response.ok) {
       dispatch(removeCartItem(productId));
-    } else {
-      throw new Error('Request failed with status ' + response.status);
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
+    } 
 };
 export const clearCart = (userId) => async (dispatch) => {
-  try {
     const response = await csrfFetch('/api/cart', {
       method: 'DELETE',
       headers: {
@@ -81,12 +68,7 @@ export const clearCart = (userId) => async (dispatch) => {
     });
     if (response.ok) {
       dispatch(removeCartItems());
-    } else {
-      throw new Error('Request failed with status ' + response.status);
     }
-  } catch (error) {
-    console.error('Error:', error);
-  }
 };
 // export const updateCart = (userId, productId, quantity) => async (dispatch) => {
 //   try {
@@ -107,7 +89,6 @@ export const clearCart = (userId) => async (dispatch) => {
 //     console.error('Error:', error);
 //   }
 // };
-
 
 const initialState = {
     cartItems: [],
