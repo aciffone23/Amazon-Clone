@@ -97,12 +97,27 @@ body {
   
 .cart-quantity {
     position: absolute;
-    top: 30px; 
-    right: 35px; 
+    top: 25px;
+    right: 64px;
+    transform: translateX(50%);
     color: #f08804;
     font-size: 18px;
     padding: 4px;
     font-weight: 700;
     text-align: center;
+    left: 50%;
+  }
+
+  .cart-img {
+    width: 90%;
+    border: 1px solid transparent;
+    margin-right: -100px;
+    margin-top: 10px;
+    padding: 5px;
+  }
+
+  .cart-img:hover {
+    border: 1px solid #ddd;
+
   }
   

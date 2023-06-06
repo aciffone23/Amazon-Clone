@@ -9,7 +9,6 @@ const CartListings = () => {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id);
   let cartItems = useSelector(state => state.carts.cartItems);
-  const isLoading = useSelector(state => state.carts.isLoading);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -17,7 +16,7 @@ const CartListings = () => {
   useEffect(() => {
     dispatch(fetchAllProducts())
   }, [dispatch]);
-  // console.log(userId);
+  console.log(userId);
 
   useEffect(() => {
     dispatch(fetchCart())
@@ -72,7 +71,6 @@ const CartListings = () => {
 
       <div className="cart-product-listings">
         {cartItems.map((cartItem, index) => {
-          const product = cartItems.product;
 
           return (
             <div key={`${cartItem.id}-${index}`} className="cart-product-box">

@@ -1,4 +1,13 @@
 /* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&family=Source+Sans+Pro:ital,wght@0,400;1,200&display=swap');
+
+/* <style>
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&family=Source+Sans+Pro:ital,wght@0,400;1,200&display=swap');
+</style> */
 .with-background {
     background-color: #E3E6E6;
+}
+
+.body {
+    font-style: ubuntu;
 }

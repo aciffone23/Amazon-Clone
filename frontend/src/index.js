@@ -47,7 +47,12 @@ if (
   sessionStorage.getItem("currentUser") === null ||
   sessionStorage.getItem("X-CSRF-Token") === null 
 ) {
-  store.dispatch(sessionActions.restoreSession()).then(renderApplication);
+  store.dispatch(sessionActions.restoreSession())
+    .then(() => Promise.all([
+      store.dispatch(products.fetchAllProducts()),
+      store.dispatch(carts.fetchCart())
+    ]))
+    .then(renderApplication);
 } else {
   document.body.style.backgroundColor = 'white';
   renderApplication();

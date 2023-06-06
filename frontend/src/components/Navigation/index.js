@@ -5,9 +5,10 @@ import ProfileButton from '../ProfileButton/index.js';
 import './Navigation.css';
 import logo from '../../imgs/logoImgs/canal-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import SecondNavBar from '../SecondNavBar/index.js';
 import { Link } from 'react-router-dom';
+import cartImg from '../../imgs/logoImgs/cartImg.png';
 
 
 
@@ -29,10 +30,8 @@ function Navigation() {
 
   useEffect(() => {
     let quantity = 0;
-    let price = 0;
     cartItems.forEach(item => {
       quantity += item.quantity;
-      price += item.quantity * item.price;
     });
     setTotalQuantity(quantity);
   }, [cartItems]);
@@ -74,14 +73,9 @@ function Navigation() {
                     Orders
                 </NavLink>
                 <Link to="/cart">
-                  <FontAwesomeIcon
-                      className="cart-icon"
-                      icon={faShoppingCart}
-                      size="2x" 
-                      style={{ color: "#ffffff" }}
-                  />
+                <img src={cartImg} alt="cartImg" className="cart-img" />
                   {totalQuantity > 0 && (
-              <span className="cart-quantity">{totalQuantity}</span>
+                <span className="cart-quantity">{totalQuantity}</span>
             )}
                 </Link>
             </div>
