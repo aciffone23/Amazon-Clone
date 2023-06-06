@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import './reset.css'
 import './index.css';
 import App from './App';
 import configureStore from './store';
@@ -9,7 +10,6 @@ import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
 import * as products from './store/product'
 import * as carts from './store/cart'
-import './reset.css'
 
 
 const store = configureStore();
@@ -47,12 +47,7 @@ if (
   sessionStorage.getItem("currentUser") === null ||
   sessionStorage.getItem("X-CSRF-Token") === null 
 ) {
-  store.dispatch(sessionActions.restoreSession())
-    .then(() => Promise.all([
-      store.dispatch(products.fetchAllProducts()),
-      store.dispatch(carts.fetchCart())
-    ]))
-    .then(renderApplication);
+  store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
   document.body.style.backgroundColor = 'white';
   renderApplication();
