@@ -13,10 +13,7 @@ const ProductShow = () => {
     const userId = useSelector(state => state.session.user?.id);
     const [quantity, setQuantity] = useState(1)
     const [showModal, setShowModal] = useState(false);
-    const navigate = useNavigate(); // 
-
-
-
+    const navigate = useNavigate(); 
     
     useEffect(() => {
         dispatch(fetchProduct(id));
@@ -39,10 +36,6 @@ const ProductShow = () => {
             });
         }
       };
-
-      
-      
-      
     
     if (!product) {
         return null;

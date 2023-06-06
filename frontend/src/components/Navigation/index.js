@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from '../ProfileButton/index.js';
 import './Navigation.css';
@@ -9,6 +9,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import SecondNavBar from '../SecondNavBar/index.js';
 import { Link } from 'react-router-dom';
 import cartImg from '../../imgs/logoImgs/cartImg.png';
+import LoginModal from '../ProductShow/Modal/index.js';
 
 
 
@@ -16,8 +17,18 @@ function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
   const [showDropdown, setShowDropdown] = useState(false);
   const [totalQuantity, setTotalQuantity] = useState(0);
+  const [showModal, setShowModal] = useState(false); 
   let cartItems = useSelector(state => state.carts.cartItems);
+  const navigate = useNavigate();
 
+  const handleAddToCart = () => {
+    if (!sessionUser) {
+      setShowModal(true);
+      return;
+    } 
+
+    navigate('/cart');
+  };
 
 
   const handleMouseEnter = () => {
@@ -72,15 +83,18 @@ function Navigation() {
                 <NavLink to="/returns-orders" className="placeholder-link">
                     Orders
                 </NavLink>
-                <Link to="/cart">
+                <div onClick={handleAddToCart}>
                 <img src={cartImg} alt="cartImg" className="cart-img" />
                   {totalQuantity > 0 && (
                 <span className="cart-quantity">{totalQuantity}</span>
             )}
-                </Link>
+                </div>
             </div>
       </header>
       <SecondNavBar />
+      {showModal && (
+        <LoginModal onClose={() => setShowModal(false)} />
+      )}
     </div>
   );
 }
