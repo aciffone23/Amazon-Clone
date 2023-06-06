@@ -14,7 +14,7 @@ import CartListings from './components/CartListings';
 
 function App() {
   const location = useLocation();
-  const shouldApplyBackground = location.path === '/';
+  const shouldApplyBackground = location.pathname === '/' || location.pathname === '/cart';
   
   return (
     <div className={`container ${shouldApplyBackground ? 'with-background' : ''}`}>

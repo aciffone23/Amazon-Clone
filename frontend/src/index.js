@@ -49,6 +49,6 @@ if (
 ) {
   store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
-  document.body.style.backgroundColor = '#E3E6E6';
+  document.body.style.backgroundColor = 'white';
   renderApplication();
 }
