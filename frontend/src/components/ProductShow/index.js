@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { fetchProduct, getProduct } from '../../store/product';
 import './ProductShow.css'
 import { addOrUpdateToCart, fetchCart } from '../../store/cart';
@@ -82,7 +82,11 @@ const ProductShow = () => {
                   <option value={9}>Qty: 9</option>
                   <option value={10}>Qty: 10</option>
                 </select>
-                <button className="add-to-cart-btn" onClick={handleAddToCart}>Add to Cart</button>
+                <Link to="/cart">
+                    <button className="add-to-cart-btn" onClick={handleAddToCart}>
+                        Add to Cart
+                    </button>
+                </Link>            
             </div>
         </div>
         <div className="product-details-box">

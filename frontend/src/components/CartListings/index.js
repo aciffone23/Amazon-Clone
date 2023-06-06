@@ -8,12 +8,14 @@ import { Link } from 'react-router-dom';
 const CartListings = () => {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id);
-  const cartItems = useSelector(state => state.carts.cartItems);
+  let cartItems = useSelector(state => state.carts.cartItems);
+  const isLoading = useSelector(state => state.carts.isLoading);
+
 
   useEffect(() => {
     dispatch(fetchAllProducts())
   }, [dispatch]);
-  console.log(userId);
+  // console.log(userId);
 
   useEffect(() => {
     dispatch(fetchCart())
@@ -30,6 +32,17 @@ const CartListings = () => {
     }
   };
 
+  cartItems = cartItems.sort((a, b) => a.id - b.id);
+
+  if (cartItems.length === 0) {
+    return <div>Your cart is empty.</div>; 
+  }
+
+  const handleClearCart = () => {
+    dispatch(clearCart(userId));
+  };
+
+
   return (
     <div className="cart-listings-container">
       <div className="cart-heading">
@@ -41,22 +54,24 @@ const CartListings = () => {
         </div>
       </div>
 
+      
+
       <div className="cart-product-listings">
-        {cartItems.map(cartItem => {
+        {cartItems.map((cartItem, index) => {
           const product = cartItems.product;
 
           return (
-            <div key={cartItem.id} className="cart-product-box">
+            <div key={`${cartItem.id}-${index}`} className="cart-product-box">
               <Link to={`/products/${cartItem.id}`}>
                 <img src={cartItem.photoUrl} alt={cartItem.name} className="cart-item-image" />
               </Link>
               <div className="cart-item-details">
+              <span className="cart-item-price">${cartItem.price}</span>
                 <Link to={`/products/${cartItem.id}`} className="cart-item-name">
                   {cartItem.name}
                 </Link>
                 <span className="cart-item-brand">{cartItem.brand}</span>
                 <h5 className="cart-stock">In Stock</h5>
-                <span className="cart-item-price">${cartItem.price}</span>
                 <select
                   className="cart-item-quantity"
                   value={cartItem.quantity}
@@ -79,6 +94,7 @@ const CartListings = () => {
           );
         })}
       </div>
+      <button onClick={handleClearCart}>Clear Cart</button>
     </div>
   );
 };

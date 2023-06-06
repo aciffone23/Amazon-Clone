@@ -4,7 +4,6 @@ class Api::CartsController < ApplicationController
     # before_action :set_cart, only: [:destroy, :update]
 
     def create
-
       @cart = Cart.find_or_initialize_by(user_id: params[:user_id], product_id: params[:product_id])
       @cart.quantity ||= 0 
       @cart.quantity = params[:quantity].to_i
@@ -12,8 +11,9 @@ class Api::CartsController < ApplicationController
         render json: { errors: @cart.errors.full_messages }, status: :unprocessable_entity
         return
       end
-    
+
       @user = User.find(params[:user_id])
+      @cart_items = Cart.includes(:product).where(user_id: @user.id)
       render :show
     end
     
