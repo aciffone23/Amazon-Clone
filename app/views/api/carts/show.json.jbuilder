@@ -4,3 +4,4 @@ json.array! @cart_items.each do |cart_item|
   json.photoUrl cart_item.product.photo.attached? ? url_for(cart_item.product.photo.url) : nil
   json.extract! cart_item.product, :id, :brand, :name, :description, :dimensions, :category, :price, :created_at
 end
+

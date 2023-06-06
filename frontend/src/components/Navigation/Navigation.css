@@ -95,4 +95,14 @@ body {
     padding: 0;
 }
   
+.cart-quantity {
+    position: absolute;
+    top: 30px; 
+    right: 35px; 
+    color: #f08804;
+    font-size: 18px;
+    padding: 4px;
+    font-weight: 700;
+    text-align: center;
+  }
   

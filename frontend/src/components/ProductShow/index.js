@@ -82,7 +82,7 @@ const ProductShow = () => {
                   <option value={9}>Qty: 9</option>
                   <option value={10}>Qty: 10</option>
                 </select>
-                <Link to="/cart">
+                <Link to="/cart" className="button-link">
                     <button className="add-to-cart-btn" onClick={handleAddToCart}>
                         Add to Cart
                     </button>

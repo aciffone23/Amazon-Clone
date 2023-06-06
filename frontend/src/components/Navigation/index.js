@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from '../ProfileButton/index.js';
@@ -14,6 +14,10 @@ import { Link } from 'react-router-dom';
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  let cartItems = useSelector(state => state.carts.cartItems);
+
+
 
   const handleMouseEnter = () => {
     setShowDropdown(true);
@@ -22,6 +26,16 @@ function Navigation() {
   const handleMouseLeave = () => {
     setShowDropdown(false);
   };
+
+  useEffect(() => {
+    let quantity = 0;
+    let price = 0;
+    cartItems.forEach(item => {
+      quantity += item.quantity;
+      price += item.quantity * item.price;
+    });
+    setTotalQuantity(quantity);
+  }, [cartItems]);
 
   return (
     <div className="navigation-container">
@@ -66,6 +80,9 @@ function Navigation() {
                       size="2x" 
                       style={{ color: "#ffffff" }}
                   />
+                  {totalQuantity > 0 && (
+              <span className="cart-quantity">{totalQuantity}</span>
+            )}
                 </Link>
             </div>
       </header>

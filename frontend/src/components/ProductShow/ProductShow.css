@@ -123,6 +123,10 @@
     width: 100%;
   }
 
+  .button-link {
+    text-decoration: none;
+  }
+
   .product-details-show p {
     font-size: 10px;
   }

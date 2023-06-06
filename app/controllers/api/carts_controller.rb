@@ -18,7 +18,9 @@ class Api::CartsController < ApplicationController
     end
     
     def show
-      @cart_items = Cart.includes(:product).where(user_id: @user.id)
+      
+      
+      @cart_items = Cart.includes(:product).where(user_id: @user.id)  
       render :show
     end
   

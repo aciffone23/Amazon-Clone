@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addOrUpdateToCart, clearCart, fetchCart, removeFromCart } from '../../store/cart';
 import { fetchAllProducts } from '../../store/product';
@@ -10,6 +10,8 @@ const CartListings = () => {
   const userId = useSelector(state => state.session.user.id);
   let cartItems = useSelector(state => state.carts.cartItems);
   const isLoading = useSelector(state => state.carts.isLoading);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
 
   useEffect(() => {
@@ -20,6 +22,18 @@ const CartListings = () => {
   useEffect(() => {
     dispatch(fetchCart())
   }, [dispatch]);
+
+
+  useEffect(() => {
+    let quantity = 0;
+    let price = 0;
+    cartItems.forEach(item => {
+      quantity += item.quantity;
+      price += item.quantity * item.price;
+    });
+    setTotalQuantity(quantity);
+    setTotalPrice(price.toFixed(2));
+  }, [cartItems]);
 
   const handleQtyChange = (e, productId) => {
     const quantity = e.target.value;
@@ -94,7 +108,11 @@ const CartListings = () => {
           );
         })}
       </div>
-      <button onClick={handleClearCart}>Clear Cart</button>
+      <button className="clear-cart-btn" onClick={handleClearCart}>Clear Cart</button>
+      <div className="cart-summary">
+        <p className="cart-total-quantity">Subtotal ({totalQuantity} items):<span className="cart-total-price">${totalPrice}</span></p>
+      </div>
+
     </div>
   );
 };

@@ -7,7 +7,7 @@ function SecondNavBar () {
         <nav className="second-navbar" id="nav-main">
             <ul className="category-list">
             <li>
-                <NavLink to="/products">All Products</NavLink>
+                <NavLink to="/products">All</NavLink>
             </li>   
             <li>
                 <NavLink to="/products/category/shoes">Shoes</NavLink>
