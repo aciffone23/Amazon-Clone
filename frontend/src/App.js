@@ -12,6 +12,7 @@ import ProductListings from './components/ProductListings';
 import CategoryListings from './components/CategoryListings';
 import CartListings from './components/CartListings';
 import { useSelector } from 'react-redux';
+import SearchListings from './components/SearchListings';
 
 function App() {
   const location = useLocation();
@@ -48,6 +49,12 @@ function App() {
           <div>
           <Navigation />
           <CategoryListings />
+          <Footer />
+          </div>} />
+        <Route path="/products/search/:keyword" element={
+          <div>
+          <Navigation />
+          <SearchListings />
           <Footer />
           </div>} />
         <Route path="/products/:id" element={

@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import ProfileButton from '../ProfileButton/index.js';
 import './Navigation.css';
 import logo from '../../imgs/logoImgs/canalLogo.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import SecondNavBar from '../SecondNavBar/index.js';
 import { Link } from 'react-router-dom';
 import cartImg from '../../imgs/logoImgs/cartImg.png';
 import LoginModal from '../ProductShow/Modal/index.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -20,6 +20,8 @@ function Navigation() {
   const [showModal, setShowModal] = useState(false); 
   let cartItems = useSelector(state => state.carts.cartItems);
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+
 
   const handleAddToCart = () => {
     if (!sessionUser) {
@@ -29,6 +31,11 @@ function Navigation() {
 
     navigate('/cart');
   };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/products/search/${searchQuery}`);
+  }
 
 
   const handleMouseEnter = () => {
@@ -56,12 +63,17 @@ function Navigation() {
               <img src={logo} alt="Canal Logo" />
             </NavLink>
             </div>
-            <div className="search-bar">
-                <input type="text" placeholder="Search" />
-                <button type="submit">
+            <form onSubmit={handleSearch} className="search-bar">
+              <input 
+                type="text" 
+                placeholder="Search"
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)} 
+              />
+              <button type="submit">
                 <FontAwesomeIcon icon={faSearch} />
-                </button>
-            </div>
+              </button>
+          </form>
             <div className="links">
                     <Link to="https://github.com/aciffone23/Amazon-Clone/wiki">
                         <i className="fab fa-github-square"></i>

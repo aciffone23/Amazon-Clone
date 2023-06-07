@@ -109,12 +109,12 @@
     justify-content: center;
     align-items: center; 
     padding: 10px 20px;
-    background-color: #e47911;
+    background-color: light gray;
     color: #111;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    width: 10%;
+    width: 13%;
     margin-top: 10px;
     font-size: 14px;
     font-weight: 400;
