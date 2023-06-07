@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 import logo from '../../imgs/logoImgs/canalLogoWhite.png'
+import { fetchCart } from '../../store/cart';
 
 
 function LoginFormPage() {
@@ -17,9 +18,10 @@ function LoginFormPage() {
 
   useEffect(() => {
     if (sessionUser) {
+      dispatch(fetchCart())
       navigate('/');
     }
-  }, [navigate, sessionUser]);
+  }, [dispatch, navigate, sessionUser]);
 
   const handleSubmit = (e, isDemoUser = false) => {
     e.preventDefault();

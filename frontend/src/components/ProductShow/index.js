@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchProduct, getProduct } from '../../store/product';
 import './ProductShow.css'
-import { addCartItem, addOrUpdateToCart, fetchCart } from '../../store/cart';
+import { addCartItem, fetchCart } from '../../store/cart';
 import LoginModal from './Modal';
 
 const ProductShow = () => {

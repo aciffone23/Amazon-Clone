@@ -12,7 +12,7 @@ export const receiveCartItem = (productId, quantity) => ({
     payload: {productId, quantity}
   });
 
-export const updateItem = (productId, quantity) => ({
+export const updateCartItem = (productId, quantity) => ({
     type: UPDATE_CART_ITEM,
     payload: {productId, quantity}
   });
@@ -38,19 +38,6 @@ export const fetchCart = () => async (dispatch) => {
       dispatch(receiveCartItems(data));
 };
 
-// export const addOrUpdateToCart = (userId, productId, quantity) => async (dispatch) => {
-//     const response = await csrfFetch('/api/cart', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ userId, productId, quantity }),
-//     });
-//     if (response.ok) {
-//       const data = await response.json();
-//       dispatch(receiveCartItem(data.productId, data.quantity));
-//     } 
-// };
 export const addCartItem = (userId, productId, quantity) => async (dispatch) => {
     const response = await csrfFetch('/api/cart', {
       method: 'POST',
@@ -65,7 +52,7 @@ export const addCartItem = (userId, productId, quantity) => async (dispatch) => 
     } 
 };
 
-export const updateCartItem = (userId, productId, quantity) => async (dispatch) => {
+export const updateCart = (userId, productId, quantity) => async (dispatch) => {
   const response = await csrfFetch(`/api/cart`, {
     method: 'PATCH',
     headers: {
@@ -75,7 +62,7 @@ export const updateCartItem = (userId, productId, quantity) => async (dispatch) 
   });
   if (response.ok) {
     const data = await response.json();
-    dispatch(updateItem(data.productId, data.quantity));
+    dispatch(updateCartItem(data.productId, data.quantity));
   }
 };
 
@@ -105,25 +92,6 @@ export const clearCart = (userId) => async (dispatch) => {
       dispatch(removeCartItems());
     }
 };
-// export const updateCart = (userId, productId, quantity) => async (dispatch) => {
-//   try {
-//     const response = await csrfFetch('/api/cart', {
-//       method: 'PATCH',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ userId, productId, quantity }),
-//     });
-//     if (response.ok) {
-//       const data = await response.json();
-//       dispatch(receiveCartItem(data.productId, data.quantity));
-//     } else {
-//       throw new Error('Request failed with status ' + response.status);
-//     }
-//   } catch (error) {
-//     console.error('Error:', error);
-//   }
-// };
 
 const initialState = {
     cartItems: [],
@@ -151,19 +119,19 @@ const initialState = {
           ...state,
           cartItems: action.payload,
         }
-      case RECEIVE_CART_ITEM:
-          return {
-            ...state,
-            cartItems: state.cartItems.map((item) => {
-              if (item.product.id === action.payload.product.id) {
-                return {
-                  ...item,
-                  quantity: action.payload.quantity,
-                };
-              }
-              return item;
-            }),
-          };
+      case UPDATE_CART_ITEM:
+        return {
+          ...state,
+          cartItems: state.cartItems.map((item) => {
+            if (item.id === action.payload.productId) {
+              return {
+                ...item,
+                quantity: action.payload.quantity,
+              };
+            }
+            return item;
+          }),
+        };  
       default:
         return state;
     }
