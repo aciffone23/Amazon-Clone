@@ -76,6 +76,15 @@
     font-size: 14px;
     color: #888;
   }
+
+  .cart-item-brand {
+    margin-bottom: 15px;
+  }
+
+  .cart-stock {
+    margin-bottom: 15px;
+    color: #007600;
+  }
   
   .cart-item-price {
     font-weight: bold;
