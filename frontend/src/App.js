@@ -16,7 +16,7 @@ import SearchListings from './components/SearchListings';
 
 function App() {
   const location = useLocation();
-  const shouldApplyBackground = location.pathname === '/' || location.pathname === '/cart';
+  const shouldApplyBackground = location.pathname === '/cart';
   
   const ProtectedRoute = ({ children }) => {
     const user = useSelector(state => state.session.user); // Update this if your state shape is different

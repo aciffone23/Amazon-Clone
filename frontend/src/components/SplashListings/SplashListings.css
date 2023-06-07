@@ -20,7 +20,7 @@
   .splash-overlay {
     position: relative;
     z-index: 1;
-    padding-top: 250px;
+    padding-top: 300px;
     height: 50%;
     background-image: linear-gradient(to bottom, transparent, #E3E6E6);
   }
@@ -73,7 +73,7 @@
     align-items: center;
     text-decoration: none;
     margin-top: -0px;
-    z-index: 999;
+    z-index: 3;
 }
   
 .splash-box img {
