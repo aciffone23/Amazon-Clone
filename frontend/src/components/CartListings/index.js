@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addOrUpdateToCart, clearCart, fetchCart, removeFromCart } from '../../store/cart';
+import { addOrUpdateToCart, clearCart, fetchCart, removeFromCart, updateCartItem } from '../../store/cart';
 import { fetchAllProducts } from '../../store/product';
 import './CartListings.css'
 import { Link } from 'react-router-dom';
@@ -11,6 +11,7 @@ const CartListings = () => {
   let cartItems = useSelector(state => state.carts.cartItems);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  
 
 
   useEffect(() => {
@@ -33,13 +34,24 @@ const CartListings = () => {
     setTotalPrice(price.toFixed(2));
   }, [cartItems]);
 
+  // const handleQtyChange = (e, productId) => {
+  //   const quantity = e.target.value;
+  //   if (quantity === '0') {
+  //     dispatch(removeFromCart(userId, productId))
+  //       .then(() => dispatch(fetchCart()));
+  //   } else {
+  //     dispatch(addOrUpdateToCart(userId, productId, quantity))
+  //       .then(() => dispatch(fetchCart())); 
+  //   }
+  // };
+
   const handleQtyChange = (e, productId) => {
     const quantity = e.target.value;
     if (quantity === '0') {
       dispatch(removeFromCart(userId, productId))
         .then(() => dispatch(fetchCart()));
     } else {
-      dispatch(addOrUpdateToCart(userId, productId, quantity))
+      dispatch(updateCartItem(userId, productId, quantity))
         .then(() => dispatch(fetchCart())); 
     }
   };

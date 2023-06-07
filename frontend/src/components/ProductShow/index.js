@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchProduct, getProduct } from '../../store/product';
 import './ProductShow.css'
-import { addOrUpdateToCart, fetchCart } from '../../store/cart';
+import { addCartItem, addOrUpdateToCart, fetchCart } from '../../store/cart';
 import LoginModal from './Modal';
 
 const ProductShow = () => {
@@ -29,7 +29,7 @@ const ProductShow = () => {
           setShowModal(true);
           return
         } else {
-          dispatch(addOrUpdateToCart(userId, id, quantity))
+          dispatch(addCartItem(userId, id, quantity))
             .then(() => dispatch(fetchCart()))
             .then(() => {
                 navigate("/cart"); 

@@ -25,16 +25,21 @@ class Api::CartsController < ApplicationController
     end
   
     def update
-      # @cart = Cart.find_or_initialize_by(user_id: params[:user_id], product_id: params[:product_id])
-      # @cart.quantity ||= 0 
-      # @cart.quantity += params[:quantity].to_i
-      # unless @cart.update
-      #   render json: { errors: @cart.errors.full_messages }, status: :unprocessable_entity
-      #   return
-      # end
+      @cart = Cart.find_by(user_id: params[:user_id], product_id: params[:product_id])
+      if @cart.nil?
+        render json: { errors: ['Cart item not found'] }, status: :not_found
+        return
+      end
     
-      # @user = User.find(params[:user_id])
-      # render :show
+      @cart.quantity = params[:quantity].to_i
+      unless @cart.save
+        render json: { errors: @cart.errors.full_messages }, status: :unprocessable_entity
+        return
+      end
+    
+      @user = User.find(params[:user_id])
+      @cart_items = Cart.includes(:product).where(user_id: @user.id)
+      render :show
     end
     
     def destroy

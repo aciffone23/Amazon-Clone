@@ -4,9 +4,16 @@ export const RECEIVE_CART_ITEM = 'cart/RECEIVE_CART_ITEM';
 export const RECEIVE_CART_ITEMS = 'cart/RECEIVE_CART_ITEMS';
 export const REMOVE_CART_ITEM = 'cart/REMOVE_CART_ITEM';
 export const REMOVE_CART_ITEMS = 'cart/REMOVE_CART_ITEMS';
+export const UPDATE_CART_ITEM = 'cart/UPDATE_CART_ITEM';
+
 
 export const receiveCartItem = (productId, quantity) => ({
     type: RECEIVE_CART_ITEM,
+    payload: {productId, quantity}
+  });
+
+export const updateItem = (productId, quantity) => ({
+    type: UPDATE_CART_ITEM,
     payload: {productId, quantity}
   });
   
@@ -31,7 +38,20 @@ export const fetchCart = () => async (dispatch) => {
       dispatch(receiveCartItems(data));
 };
 
-export const addOrUpdateToCart = (userId, productId, quantity) => async (dispatch) => {
+// export const addOrUpdateToCart = (userId, productId, quantity) => async (dispatch) => {
+//     const response = await csrfFetch('/api/cart', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({ userId, productId, quantity }),
+//     });
+//     if (response.ok) {
+//       const data = await response.json();
+//       dispatch(receiveCartItem(data.productId, data.quantity));
+//     } 
+// };
+export const addCartItem = (userId, productId, quantity) => async (dispatch) => {
     const response = await csrfFetch('/api/cart', {
       method: 'POST',
       headers: {
@@ -44,6 +64,21 @@ export const addOrUpdateToCart = (userId, productId, quantity) => async (dispatc
       dispatch(receiveCartItem(data.productId, data.quantity));
     } 
 };
+
+export const updateCartItem = (userId, productId, quantity) => async (dispatch) => {
+  const response = await csrfFetch(`/api/cart`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ userId, productId, quantity }),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateItem(data.productId, data.quantity));
+  }
+};
+
 export const removeFromCart = (userId, productId) => async (dispatch) => {
     const response = await csrfFetch('/api/cart', {
       method: 'DELETE',
@@ -116,6 +151,19 @@ const initialState = {
           ...state,
           cartItems: action.payload,
         }
+      case RECEIVE_CART_ITEM:
+          return {
+            ...state,
+            cartItems: state.cartItems.map((item) => {
+              if (item.product.id === action.payload.product.id) {
+                return {
+                  ...item,
+                  quantity: action.payload.quantity,
+                };
+              }
+              return item;
+            }),
+          };
       default:
         return state;
     }

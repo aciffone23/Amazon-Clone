@@ -34,8 +34,12 @@ function Navigation() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/products/search/${searchQuery}`);
-  }
+    if (searchQuery.trim() === '') {
+      navigate('/');
+    } else {
+      navigate(`/products/search/${searchQuery}`);
+    }
+  };
 
 
   const handleMouseEnter = () => {
@@ -97,7 +101,7 @@ function Navigation() {
                 </NavLink>
                 <div onClick={handleAddToCart}>
                 <img src={cartImg} alt="cartImg" className="cart-img" />
-                  {totalQuantity > 0 && (
+                  {sessionUser && totalQuantity > 0 && (
                 <span className="cart-quantity">{totalQuantity}</span>
             )}
                 </div>
