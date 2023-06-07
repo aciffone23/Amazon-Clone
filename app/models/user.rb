@@ -11,7 +11,8 @@ class User < ApplicationRecord
 
 
     before_validation :ensure_session_token
-
+    
+    has_many :reviews
     has_one :cart
     has_many :products, through: :cart, 
     class_name: 'Product'

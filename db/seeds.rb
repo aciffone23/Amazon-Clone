@@ -225,7 +225,7 @@ require "open-uri"
     product8.photo.attach(io: file, filename: 'supreme')
 
 
-    # More users
+    More users
     10.times do 
     User.create!({
         name: Faker::Name.unique.name,
