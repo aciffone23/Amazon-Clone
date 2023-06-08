@@ -1,0 +1,52 @@
+.reviews-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+.review-page h2 {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 32px;
+}
+
+.reviews-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .review-item {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .review-author {
+    font-weight: bold;
+  }
+  
+  .review-rating {
+    font-size: 14px;
+  }
+  
+  .review-title {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .review-body {
+    margin-bottom: 10px;
+  }
+  
+  .review-created-at {
+    font-size: 14px;
+  }

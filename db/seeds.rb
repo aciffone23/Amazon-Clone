@@ -11,6 +11,7 @@ require "open-uri"
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     Cart.destroy_all
+    Review.destroy_all
     Product.destroy_all
     User.destroy_all
     puts "Resetting primary keys..."
@@ -233,6 +234,29 @@ require "open-uri"
         password: 'password'
     }) 
     end
+
+    product_ids = (1..8).to_a
+
+    user_ids = (1..10).to_a
+
+    25.times do
+        user_id = user_ids.sample
+        product_id = product_ids.sample
+      
+        next if Review.exists?(user_id: user_id, product_id: product_id)
+      
+        title = Faker::Lorem.sentence
+        body = Faker::Lorem.paragraph
+        rating = rand(1..5)
+      
+        Review.create!(
+          user_id: user_id,
+          product_id: product_id,
+          title: title,
+          body: body,
+          rating: rating
+        )
+      end
 
     puts "Done!"
 # end

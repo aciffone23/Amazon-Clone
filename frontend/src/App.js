@@ -13,13 +13,14 @@ import CategoryListings from './components/CategoryListings';
 import CartListings from './components/CartListings';
 import { useSelector } from 'react-redux';
 import SearchListings from './components/SearchListings';
+import ReviewPage from './components/Reviews';
 
 function App() {
   const location = useLocation();
   const shouldApplyBackground = location.pathname === '/cart';
   
   const ProtectedRoute = ({ children }) => {
-    const user = useSelector(state => state.session.user); // Update this if your state shape is different
+    const user = useSelector(state => state.session.user); 
     
     if (!user) {
       return <Navigate to="/" />;
@@ -61,6 +62,7 @@ function App() {
           <div>
           <Navigation />
           <ProductShow />
+          <ReviewPage/>
           <Footer />
           </div>}  />
         <Route path="/cart" element={
