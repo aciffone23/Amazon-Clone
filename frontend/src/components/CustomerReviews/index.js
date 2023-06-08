@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchReviews } from '../../store/review';
-import './Reviews.css'; 
+import './CustomerReviews.css'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
 
-const ProductPage = () => {
+const CustomerReviews = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.products[id]?.reviews);
@@ -17,10 +17,25 @@ const ProductPage = () => {
   }, [dispatch, id]);
 
   const renderRatingStars = (rating) => {
-    const solidStars = Array(rating).fill(<FontAwesomeIcon icon={solidStar} size="sm" style={{ color: "#ffa41c" }} />);
-    const emptyStars = Array(5 - rating).fill(<FontAwesomeIcon icon={emptyStar} size="sm" style={{ color: "#ffa41c" }} />);
+    const solidStars = Array(rating).fill(0).map((_, index) => (
+      <FontAwesomeIcon
+        icon={solidStar}
+        size="sm"
+        style={{ color: "#ffa41c" }}
+        key={`solid-star-${index}`}
+      />
+    ));
+    const emptyStars = Array(5 - rating).fill(0).map((_, index) => (
+      <FontAwesomeIcon
+        icon={emptyStar}
+        size="sm"
+        style={{ color: "#ffa41c" }}
+        key={`empty-star-${index}`}
+      />
+    ));
     return [...solidStars, ...emptyStars];
   };
+  
 
   return (
     <div className="review-page">
@@ -55,4 +70,4 @@ const ProductPage = () => {
   
 };
 
-export default ProductPage;
+export default CustomerReviews;

@@ -13,7 +13,7 @@ import CategoryListings from './components/CategoryListings';
 import CartListings from './components/CartListings';
 import { useSelector } from 'react-redux';
 import SearchListings from './components/SearchListings';
-import ReviewPage from './components/Reviews';
+import ReviewPage from './components/CustomerReviews';
 
 function App() {
   const location = useLocation();
