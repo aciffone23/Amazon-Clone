@@ -181,3 +181,7 @@
   .product-review-show {
     font-size: 14px;
   }
+
+  .avg-star {
+    margin-right: 5px;
+  }

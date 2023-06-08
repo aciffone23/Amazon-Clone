@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import {  fetchAllProducts, getFilteredProducts } from '../../store/product';
+import AverageRating from '../AverageRating/AverageRating';
 
 const CategoryListings = () => {
     const dispatch = useDispatch();
@@ -23,7 +24,10 @@ const CategoryListings = () => {
                 <img src={product.photoUrl} alt={product.name} className="product-image" />
                 <span className="product-brand">{product.brand}</span>
                 <span className="product-name">{product.name}</span>
-                <span className="product-review">Review placeholder</span>
+                <div className="product-rating-count">
+                  <AverageRating product={product} />
+                  <span className="review-count">{product.reviews.length}</span>
+                </div>
                 <span className="product-price">
                 <span className="product-price-dollar">$</span>
                 <span className="product-price-show">{dollars}</span>

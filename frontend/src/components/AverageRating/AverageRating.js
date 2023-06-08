@@ -11,15 +11,15 @@ const AverageRating = ({ product }) => {
   const calculateAverageRatingStars = (averageStars) => {
     const fullStars = Math.floor(averageStars);
     const decimalPart = averageStars % 1;
-  
+
     const averageRatingStars = [];
-  
+
     for (let i = 0; i < fullStars; i++) {
       averageRatingStars.push(
         <FontAwesomeIcon key={`solid-star-${i}`} icon={solidStar} size="sm" style={{ color: "#ffa41c" }} />
       );
     }
-  
+
     if (decimalPart >= 0.25 && decimalPart < 0.75) {
       averageRatingStars.push(
         <FontAwesomeIcon key="half-star" icon={halfStar} size="sm" style={{ color: "#ffa41c" }} />
@@ -33,9 +33,9 @@ const AverageRating = ({ product }) => {
         <FontAwesomeIcon key="empty-star" icon={emptyStar} size="sm" style={{ color: "#ffa41c" }} />
       );
     }
-  
+
     const emptyStars = Array(5 - averageRatingStars.length).fill(0);
-  
+
     return averageRatingStars.concat(
       emptyStars.map((_, index) => (
         <FontAwesomeIcon
@@ -47,14 +47,13 @@ const AverageRating = ({ product }) => {
       ))
     );
   };
-  
 
   const averageStars = product.averageStars;
   const averageRatingStars = calculateAverageRatingStars(averageStars);
 
   return (
     <span>
-      {averageStars.toFixed(1)} {averageRatingStars}
+      {averageRatingStars}
     </span>
   );
 };

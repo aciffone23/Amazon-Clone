@@ -57,7 +57,8 @@ const ProductShow = () => {
                 <h2 className="product-name-show">{product.name}</h2>
                 <h1 className="product-brand-show">{product.brand}</h1>
                 <div className="product-review-show">
-                <AverageRating classname="avgrating2" product={product} />
+                    <span className="avg-star">{product.averageStars.toFixed(1)}</span>
+                    <AverageRating classname="avgrating2" product={product} />
                 </div>
             <div>
                     <hr>
@@ -114,6 +115,7 @@ const ProductShow = () => {
                 <p><span className="details-label">Brand:</span> {product.brand}</p>
                 <div className="details-reviews">
                     <span>Customer Reviews: </span>
+                    <p className='avg-star'>{product.averageStars.toFixed(1)}</p>
                     <AverageRating classname="avgrating" product={product} />
                 </div>           
             </div>

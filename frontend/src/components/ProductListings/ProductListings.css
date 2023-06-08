@@ -51,12 +51,23 @@
   .product-price {
     font-size: 28px;
     color: #0F1111;
-
+    margin-top: 5px;
   }
 
   .product-review {
     padding-bottom: 10px;
     font-size: 10px;
+    color: #0F1111;
+  }
+
+  .review-count {
+    font-size: 14px;  
+    line-height: 20px;
+    color: #007185;
+    margin-left: 5px;
+  }
+
+  .product-rating-count {
     color: #0F1111;
   }
   
