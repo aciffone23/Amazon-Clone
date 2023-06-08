@@ -52,7 +52,7 @@ const AverageRating = ({ reviews }) => {
   const { averageRating, averageRatingStars } = calculateAverageRating();
 
   return (
-    <p>{averageRating} {averageRatingStars}</p>
+    <span>{averageRating} {averageRatingStars}</span>
   );
 };
 

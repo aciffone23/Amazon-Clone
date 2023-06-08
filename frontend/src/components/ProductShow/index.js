@@ -56,7 +56,7 @@ const ProductShow = () => {
             <div className="product-details-show">
                 <h2 className="product-name-show">{product.name}</h2>
                 <h1 className="product-brand-show">{product.brand}</h1>
-                <div>
+                <div className="product-review-show">
                     <AverageRating reviews={product.reviews} />
                 </div>
             <div>
@@ -114,7 +114,7 @@ const ProductShow = () => {
                 <p><span className="details-label">Brand:</span> {product.brand}</p>
                 <div className="details-reviews">
                     <span>Customer Reviews: </span>
-                    <AverageRating reviews={product.reviews} />
+                    <AverageRating classname="avgrating" reviews={product.reviews} />
                 </div>           
             </div>
         </div>
