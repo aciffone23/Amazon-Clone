@@ -23,28 +23,36 @@ const ProductPage = () => {
   };
 
   return (
-
-    <div className="review-page">      
-      {reviews && reviews.length > 0 ? (
-          <ul className="reviews-list">
-              <h2>Customer Reviews</h2>
-          {reviews.map((review) => (
-            <li className="review-item" key={review.id}>
-              <div className="review-header">
-                <p className="review-author">{review.author}</p>
-                <p className="review-rating">{renderRatingStars(review.rating)}</p>
-              </div>
-              <h4 className="review-title">{review.title}</h4>
-              <p className="review-body">{review.body}</p>
-              <p className="review-created-at">Reviewed on: {new Date(review.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No reviews available.</p>
-      )}
-    </div>
+    <div className="review-page">
+        {reviews && reviews.length > 0 ? (
+            <ul className="reviews-list">
+            <h2>Customer Reviews</h2>
+            {reviews.map((review) => (
+                <li className="review-item" key={review.id}>
+                <div className="review-header">
+                    <p className="review-author">{review.author}</p>
+                </div>
+                <div className="review-details">
+                    <div className="review-rating">
+                    {renderRatingStars(review.rating)}
+                    </div>
+                    <h4 className="review-title">{review.title}</h4>
+                </div>
+                <p className="review-created-at">
+                    Reviewed on: {new Date(review.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                </p>
+                <div className="review-body">
+                    <p>{review.body}</p>
+                </div>
+                </li>
+            ))}
+            </ul>
+        ) : (
+            <p>No reviews available.</p>
+        )}
+        </div>
   );
+  
 };
 
 export default ProductPage;

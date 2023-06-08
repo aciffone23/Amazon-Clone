@@ -1,52 +1,70 @@
-.reviews-list {
-    list-style-type: none;
-    padding: 0;
+.review-page {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-.review-page h2 {
+  
+  .reviews-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .reviews-list h2 {
     font-size: 21px;
     font-weight: 700;
     line-height: 32px;
-}
-
-.reviews-list {
-    list-style-type: none;
-    padding: 0;
   }
   
   .review-item {
-    padding: 10px;
-    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .review-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-bottom: 10px;
   }
   
   .review-author {
     font-weight: bold;
+    font-size: 13px;
+    line-height: 19px;
+    margin: 0;
+  }
+  
+  .review-details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
   }
   
   .review-rating {
     font-size: 14px;
+    margin-right: 10px;
   }
   
   .review-title {
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 700;
-    margin-top: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .review-body {
-    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
   }
   
   .review-created-at {
     font-size: 14px;
+    line-height: 20px;
+    color: #565959;
+    margin: 0;
   }
+  
+  .review-body {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+  }
+  
