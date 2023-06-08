@@ -46,6 +46,13 @@
     color: #565959;
 
   }
+  .details-reviews {
+    display: flex;
+    align-items: center;
+  }
+  .details-reviews span{
+    margin-right: 4px;
+  }
   
   .product-name-show {
     font-size: 24px;
@@ -156,11 +163,14 @@
   .product-details span  {
     font-size: 14px;
     font-weight: 700;
+    line-height: 20px;
     color: #0F1111;
+    margin-right: 5px;
   }
 
   .product-details p {
     font-size: 14px;
+    line-height: 20px;
     color: #0F1111;
   }
 

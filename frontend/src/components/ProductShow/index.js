@@ -5,6 +5,7 @@ import { fetchProduct, getProduct } from '../../store/product';
 import './ProductShow.css'
 import { addCartItem, fetchCart } from '../../store/cart';
 import LoginModal from './Modal';
+import AverageRating from '../AverageRating/AverageRating';
 
 const ProductShow = () => {
     let dispatch = useDispatch();
@@ -55,8 +56,10 @@ const ProductShow = () => {
             <div className="product-details-show">
                 <h2 className="product-name-show">{product.name}</h2>
                 <h1 className="product-brand-show">{product.brand}</h1>
-                <p>(rating placeholder)</p>
                 <div>
+                    <AverageRating reviews={product.reviews} />
+                </div>
+            <div>
                     <hr>
                     </hr>
                 </div>
@@ -109,7 +112,10 @@ const ProductShow = () => {
                 <p><span className="details-label">Dimensions:</span> {product.dimensions}</p>
                 <p><span className="details-label">Category:</span> {product.category}</p>
                 <p><span className="details-label">Brand:</span> {product.brand}</p>
-                <p><span className="details-label">Customer Reviews:</span> (review placeholder)</p>
+                <div className="details-reviews">
+                    <span>Customer Reviews: </span>
+                    <AverageRating reviews={product.reviews} />
+                </div>           
             </div>
         </div>
     </div>

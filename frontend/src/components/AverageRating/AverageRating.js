@@ -11,26 +11,30 @@ const AverageRating = ({ reviews }) => {
       const fullStars = Math.floor(averageRating);
       const decimalPart = averageRating % 1;
 
-      let averageRatingStars = Array(fullStars).fill(
-        <FontAwesomeIcon icon={solidStar} size="sm" style={{ color: "#ffa41c" }} />
-      );
+      let averageRatingStars = [];
+
+      for (let i = 0; i < fullStars; i++) {
+        averageRatingStars.push(
+          <FontAwesomeIcon key={`solid-star-${i}`} icon={solidStar} size="sm" style={{ color: "#ffa41c" }} />
+        );
+      }
 
       if (decimalPart >= 0.25 && decimalPart < 0.75) {
         averageRatingStars.push(
-          <FontAwesomeIcon icon={halfStar} size="sm" style={{ color: "#ffa41c" }} />
+          <FontAwesomeIcon key="half-star" icon={halfStar} size="sm" style={{ color: "#ffa41c" }} />
         );
       } else if (decimalPart >= 0.75) {
         averageRatingStars.push(
-          <FontAwesomeIcon icon={solidStar} size="sm" style={{ color: "#ffa41c" }} />
+          <FontAwesomeIcon key="solid-star-decimal" icon={solidStar} size="sm" style={{ color: "#ffa41c" }} />
         );
       } else {
         averageRatingStars.push(
-          <FontAwesomeIcon icon={emptyStar} size="sm" style={{ color: "#ffa41c" }} />
+          <FontAwesomeIcon key="empty-star" icon={emptyStar} size="sm" style={{ color: "#ffa41c" }} />
         );
       }
 
       const emptyStars = Array(5 - averageRatingStars.length).fill(
-        <FontAwesomeIcon icon={emptyStar} size="sm" style={{ color: "#ffa41c" }} />
+        <FontAwesomeIcon key={`empty-star-${averageRatingStars.length}`} icon={emptyStar} size="sm" style={{ color: "#ffa41c" }} />
       );
 
       return {
@@ -48,9 +52,7 @@ const AverageRating = ({ reviews }) => {
   const { averageRating, averageRatingStars } = calculateAverageRating();
 
   return (
-    <p>
-      {averageRating} {averageRatingStars}
-    </p>
+    <p>{averageRating} {averageRatingStars}</p>
   );
 };
 
