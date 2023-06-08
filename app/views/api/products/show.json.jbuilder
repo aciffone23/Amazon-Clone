@@ -5,3 +5,5 @@ json.reviews @product.reviews do |review|
   json.extract! review, :id, :title, :body, :rating, :created_at
   json.author review.user.name
 end
+
+json.average_stars @product.reviews.average(:rating).to_f if @product.reviews.present?
