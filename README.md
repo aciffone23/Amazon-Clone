@@ -1,24 +1,66 @@
-# README
+<h1>Canal</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<a href="(https://canal.onrender.com)">Canal is an Amazon clone project. The project focuses on replicating key features of the Amazon platform, such as browsing and searching for products, adding items to the cart, and completing the checkout process. By emulating the functionality and design of Amazon, Canal aims to provide users with a familiar and intuitive shopping experience.
 
-Things you may want to cover:
+<h1>Functionality & MVPs</h1>
 
-* Ruby version
+  <h2>In Canal</h2>
+  <ul>
+    <li>Browse and search for products across different categories.</li>
+    <li>View detailed information about each product, including images, descriptions, and pricing.</li>
+    <li>Add products to the cart and adjust the quantity.</li>
+    <li>BManage user accounts, including login and registration.</li>
+    <li>Leave reviews on products they've purchased.</li>
+  </ul>
 
-* System dependencies
+<h1>Technologies, Libraries, APIs</h1>
+  
+  Canal utilizes the following technologies, libraries, and APIs:
+  <ul>
+    <li>Rails: The backend of the project is built using Ruby on Rails, providing a robust and scalable server-side framework.</li>
+    <li>React: The frontend of the application is developed using React, a popular JavaScript library for building user interfaces.</li>
+    <li>Redux: Redux is used for state management in the application, providing a centralized store for managing data and enabling predictable state updates.</li>
+    <li>React Router: React Router is used for routing and navigation between different pages in the application, allowing for a smooth and seamless user experience.</li>
+    <li>AWS: Amazon Web Services (AWS) is utilized for various functionalities, such as cloud storage (Amazon S3) for storing product images and other assets, as well as deployment and hosting options (Amazon EC2 or AWS Amplify).</li>
+  </ul>
 
-* Configuration
+<h1>Implementation Timeline:</h1>
+  
+### 1. Hosting on Render(.5 days, 5/26)
 
-* Database creation
+### 2. User Auth(2 days, 5/27-5/28)
++ Have sign-in, sign-out, and sign-up
++ Error handling for invalid sign-in and sign-up
++ Make demo user option
 
-* Database initialization
+### 3. Product listings (3 days, 5/29-5/31)
++ Add header
++ Have home page display randomly selected products
++ On product click will display product page
 
-* How to run the test suite
+### 4. Shopping cart (3 days, 6/01-6/03)
++ Add items to shopping cart
++ Can edit amount in the cart
++ Can remove items from cart
++ Can checkout only if logged in
 
-* Services (job queues, cache servers, search engines, etc.)
+### 5. Can give reviews(2 days, 6/04-6/05)
++ List of reviews from users
++ Shows rating of product
++ Can only add review if purchased and logged in
++ Have to leave rating and written review
++ Can not delete just edit review 
 
-* Deployment instructions
+### 6. Add search bar(2 days, 6/05-6/06)
++ Be able to search for products and category
 
-* ...
+
+### 7. Production README(1 day, 6/07)
+
+  <h1>Future Implementations</h1>
+
+  <ul>
+    <li>Enhance the search functionality with advanced filtering options.</li>
+    <li>Improve the overall performance and loading speed of the application.</li>
+    <li>Enhance the search functionality with advanced filtering options.</li>
+  </ul>
