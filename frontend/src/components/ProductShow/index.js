@@ -59,6 +59,7 @@ const ProductShow = () => {
                 <div className="product-review-show">
                     <span className="avg-star">{ product.averageStars ? product.averageStars.toFixed(1) : 0}</span>
                     <AverageRating classname="avgrating2" product={product} />
+                    <span className="review-count">{product.reviews.length}</span>
                 </div>
             <div>
                     <hr>
@@ -117,6 +118,7 @@ const ProductShow = () => {
                     <span>Customer Reviews: </span>
                     <span className="avg-star">{ product.averageStars ? product.averageStars.toFixed(1) : 0}</span>
                     <AverageRating classname="avgrating" product={product} />
+                    <h5 className="review-count">{product.reviews.length}</h5>
                 </div>           
             </div>
         </div>
