@@ -14,6 +14,7 @@ const ProductListings = () => {
         dispatch(fetchAllProducts())
     },[dispatch])
     
+    
     return (
     <div className="product-listings">
     {products.map((product) => {
