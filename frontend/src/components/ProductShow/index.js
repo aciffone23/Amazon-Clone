@@ -15,11 +15,13 @@ const ProductShow = () => {
     const [quantity, setQuantity] = useState(1)
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate(); 
+    const reviews = useSelector((state) => state.products[id]?.reviews);
+    
     
     useEffect(() => {
         dispatch(fetchProduct(id));
     }, [dispatch, id]);
-
+    
     const handleQtyChange = (e) => {
         setQuantity(Number(e.target.value));
     };
@@ -59,7 +61,7 @@ const ProductShow = () => {
                 <div className="product-review-show">
                     <span className="avg-star">{ product.averageStars ? product.averageStars.toFixed(1) : 0}</span>
                     <AverageRating classname="avgrating2" product={product} />
-                    <span className="review-count">{product.reviews.length}</span>
+                    <span className="review-count">{reviews ? reviews.length : 0}</span>
                 </div>
             <div>
                     <hr>
@@ -118,7 +120,7 @@ const ProductShow = () => {
                     <span>Customer Reviews: </span>
                     <span className="avg-star">{ product.averageStars ? product.averageStars.toFixed(1) : 0}</span>
                     <AverageRating classname="avgrating" product={product} />
-                    <h5 className="review-count">{product.reviews.length}</h5>
+                    <span className="review-count">{reviews ? reviews.length : 0}</span>
                 </div>           
             </div>
         </div>
