@@ -57,7 +57,7 @@ const ProductShow = () => {
                 <h2 className="product-name-show">{product.name}</h2>
                 <h1 className="product-brand-show">{product.brand}</h1>
                 <div className="product-review-show">
-                    <span className="avg-star">{product.averageStars.toFixed(1)}</span>
+                    <span className="avg-star">{ product.averageStars ? product.averageStars.toFixed(1) : 0}</span>
                     <AverageRating classname="avgrating2" product={product} />
                 </div>
             <div>
