@@ -115,7 +115,7 @@ const ProductShow = () => {
                 <p><span className="details-label">Brand:</span> {product.brand}</p>
                 <div className="details-reviews">
                     <span>Customer Reviews: </span>
-                    <p className='avg-star'>{product.averageStars.toFixed(1)}</p>
+                    <span className="avg-star">{ product.averageStars ? product.averageStars.toFixed(1) : 0}</span>
                     <AverageRating classname="avgrating" product={product} />
                 </div>           
             </div>
