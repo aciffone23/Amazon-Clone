@@ -9,6 +9,9 @@ const AverageRating = ({ product }) => {
   }
 
   const calculateAverageRatingStars = (averageStars) => {
+    if (!averageStars || averageStars <= 0) {
+        return [];
+    }
     const fullStars = Math.floor(averageStars);
     const decimalPart = averageStars % 1;
 
