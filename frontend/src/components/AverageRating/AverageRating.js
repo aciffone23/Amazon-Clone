@@ -48,7 +48,7 @@ const AverageRating = ({ product }) => {
     );
   };
 
-  const averageStars = product.averageStars;
+  const averageStars = product.averageStars ? product.averageStars : 0;
   const averageRatingStars = calculateAverageRatingStars(averageStars);
 
   return (
