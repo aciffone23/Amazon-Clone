@@ -13,7 +13,7 @@ import CategoryListings from './components/CategoryListings';
 import CartListings from './components/CartListings';
 import { useSelector } from 'react-redux';
 import SearchListings from './components/SearchListings';
-import ReviewPage from './components/CustomerReviews';
+import CustomerReviews from './components/Reviews';
 
 function App() {
   const location = useLocation();
@@ -62,7 +62,7 @@ function App() {
           <div>
           <Navigation />
           <ProductShow />
-          <ReviewPage/>
+          <CustomerReviews/>
           <Footer />
           </div>}  />
         <Route path="/cart" element={

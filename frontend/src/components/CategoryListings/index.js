@@ -26,7 +26,7 @@ const CategoryListings = () => {
                 <span className="product-name">{product.name}</span>
                 <div className="product-rating-count">
                   <AverageRating product={product} />
-                  <span className="review-count">{product.reviews.length}</span>
+                  <span className="review-count">{product.reviewCount}</span>
                 </div>
                 <span className="product-price">
                 <span className="product-price-dollar">$</span>

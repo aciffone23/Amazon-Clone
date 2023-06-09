@@ -1,20 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchReviews } from '../../store/review';
-import './CustomerReviews.css'; 
+import './Reviews.css'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
 
 const CustomerReviews = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
   const reviews = useSelector((state) => state.products[id]?.reviews);
-
-  useEffect(() => {
-    dispatch(fetchReviews(id));
-  }, [dispatch, id]);
 
   const renderRatingStars = (rating) => {
     const solidStars = Array(rating).fill(0).map((_, index) => (

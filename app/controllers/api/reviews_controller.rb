@@ -32,5 +32,5 @@ class Api::ReviewsController < ApplicationController
 
     def already_reviewed?(user_id, product_id)
         Review.exists?(user_id: user_id, product_id: product_id)
-    end
+    end    
 end

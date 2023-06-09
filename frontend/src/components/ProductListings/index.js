@@ -22,12 +22,14 @@ const ProductListings = () => {
       
       return (
         <Link to={`/products/${product.id}`} key={product.id} className="product-box">
-            <img src={product.photoUrl} alt={product.name} className="product-image" />
+            <div className="image-container">
+              <img src={product.photoUrl} alt={product.name} className="product-image" />
+            </div>
             <span className="product-brand">{product.brand}</span>
             <span className="product-name">{product.name}</span>
             <div className="product-rating-count">
               <AverageRating product={product} />
-              <span className="review-count">{product.reviews.length}</span>
+              <span className="review-count">{product.reviewCount}</span>
             </div>
             <span className="product-price">
             <span className="product-price-dollar">$</span>

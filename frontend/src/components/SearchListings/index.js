@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllProducts, getProducts } from '../../store/product';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import './SearchListings.css';
+import AverageRating from '../AverageRating/AverageRating';
 
 const SearchListings = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -59,7 +60,10 @@ const SearchListings = () => {
             />
             <span className="product-brand">{product.brand}</span>
             <span className="product-name">{product.name}</span>
-            <span className="product-review">Review placeholder</span>
+            <div className="product-rating-count">
+              <AverageRating product={product} />
+              <span className="review-count">{product.reviewCount}</span>
+            </div>
             <span className="product-price">
               <span className="product-price-dollar">$</span>
               <span className="product-price-show">{dollars}</span>
