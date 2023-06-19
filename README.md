@@ -2,15 +2,33 @@
 
 <a href="(https://canal.onrender.com)">Canal is an Amazon clone project. The project focuses on replicating key features of the Amazon platform, such as browsing and searching for products, adding items to the cart, and completing the checkout process. By emulating the functionality and design of Amazon, Canal aims to provide users with a familiar and intuitive shopping experience.
 
+  ![Screen Shot 2023-06-19 at 3 13 06 PM](https://github.com/aciffone23/Amazon-Clone/assets/110213103/92052ae1-f47d-4e3c-9903-c724ed80bb72)
+
 <h1>Functionality & MVPs</h1>
 
   <h2>In Canal</h2>
   <ul>
-    <li>Browse and search for products across different categories.</li>
-    <li>View detailed information about each product, including images, descriptions, and pricing.</li>
-    <li>Add products to the cart and adjust the quantity.</li>
-    <li>BManage user accounts, including login and registration.</li>
-    <li>Leave reviews on products they've purchased.</li>
+    <li>Browse and search for products across different categories.
+      <br>
+    <img alt="Screen Shot 2023-06-19 at 3 18 59 PM" src="https://github.com/aciffone23/Amazon-Clone/assets/110213103/20823394-f6fc-4314-a674-854c5e9da88d">
+    </li>
+    <li>View detailed information about each product, including images, descriptions, and pricing.
+      <br>
+    <img alt="Screen Shot 2023-06-19 at 3 20 08 PM" src="https://github.com/aciffone23/Amazon-Clone/assets/110213103/bd4ec9f9-455a-4988-ab55-bd4c7d54c338">
+      <br>
+     </li>
+    <li>Add products to the cart and adjust the quantity.
+      <br>
+      <img alt="Screen Shot 2023-06-19 at 3 21 40 PM" src="https://github.com/aciffone23/Amazon-Clone/assets/110213103/712051f8-a28f-42d8-9c04-9f1dcf0cc31f">
+    </li>
+    <li>Manage user accounts, including login and registration.
+      <br>
+      <img "Screen Shot 2023-06-19 at 3 22 24 PM" src="https://github.com/aciffone23/Amazon-Clone/assets/110213103/ab769990-98a2-405a-9ed5-737d33434952">
+    </li>
+    <li>Leave reviews on products they've purchased.
+      <br>
+      <img alt="Screen Shot 2023-06-19 at 3 24 21 PM" src="https://github.com/aciffone23/Amazon-Clone/assets/110213103/68230d02-7941-4ecc-860d-b19b6f84f6b0">
+    </li>
   </ul>
 
 <h1>Technologies, Libraries, APIs</h1>
