@@ -7,7 +7,6 @@
     max-width: 40%;
     background-color: white;
     margin-bottom: 200px;
-    border: 1px solid red;
   }
 
   .product-image-review {
@@ -22,7 +21,6 @@
   }
   
   .user-header-box {
-    border: 1px solid red;
     background-color: #defaff;
   }
 
@@ -42,7 +40,6 @@
     margin: auto;
     max-width: 40%;
     background-color: #defaff;
-    border: 1px solid red;
   }
 
   .product-image-small {
