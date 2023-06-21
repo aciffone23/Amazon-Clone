@@ -74,10 +74,12 @@ function App() {
             </ProtectedRoute>
             <Footer />
           </div>}/>
-        <Route path="/reviews" element={
+        <Route path="/create-review/:id" element={
           <div>
             <Navigation />
-            {/* <CreateReviews> */}
+            <ProtectedRoute>
+              <CreateReviews/>
+            </ProtectedRoute>
             <Footer />
           </div>}/>
         <Route path="*" element={<Navigate to="/" />} />
