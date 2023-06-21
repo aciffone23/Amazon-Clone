@@ -14,6 +14,7 @@ import CartListings from './components/CartListings';
 import { useSelector } from 'react-redux';
 import SearchListings from './components/SearchListings';
 import CustomerReviews from './components/Reviews';
+import CreateReviews from './components/Reviews/CreateReview';
 
 function App() {
   const location = useLocation();
@@ -71,6 +72,12 @@ function App() {
             <ProtectedRoute>
               <CartListings />
             </ProtectedRoute>
+            <Footer />
+          </div>}/>
+        <Route path="/reviews" element={
+          <div>
+            <Navigation />
+            {/* <CreateReviews> */}
             <Footer />
           </div>}/>
         <Route path="*" element={<Navigate to="/" />} />
