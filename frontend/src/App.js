@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import SearchListings from './components/SearchListings';
 import CustomerReviews from './components/Reviews';
 import CreateReviews from './components/Reviews/CreateReview';
+import LoginModal from './components/ProductShow/Modal';
 
 function App() {
   const location = useLocation();
@@ -24,7 +25,7 @@ function App() {
     const user = useSelector(state => state.session.user); 
     
     if (!user) {
-      return <Navigate to="/" />;
+      return <LoginModal />;
     }
   
     return children;

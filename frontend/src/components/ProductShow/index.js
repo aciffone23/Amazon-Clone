@@ -47,9 +47,11 @@ const ProductShow = () => {
     const [dollars, cents] = price.split('.');
 
     const handleReviewButtonClick = () => {
-        navigate(`/reviews/${id}`);
-    };
-
+        if (!userId) {
+            setShowModal(true);
+          } else {
+            navigate(`/reviews/${id}`);
+          }    };
     return (
         <div className="products-container">
             <div className="product-show">
