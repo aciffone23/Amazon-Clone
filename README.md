@@ -1,6 +1,6 @@
 <h1>Canal</h1>
 
-<a href="(https://canal.onrender.com)">Canal is an Amazon clone project. The project focuses on replicating key features of the Amazon platform, such as browsing and searching for products, adding items to the cart, and completing the checkout process. By emulating the functionality and design of Amazon, Canal aims to provide users with a familiar and intuitive shopping experience.
+<a href="https://canal.onrender.com">Canal</a> is an Amazon clone project. The project focuses on replicating key features of the Amazon platform, such as browsing and searching for products, adding items to the cart, and completing the checkout process. By emulating the functionality and design of Amazon, Canal aims to provide users with a familiar and intuitive shopping experience.
 
   ![Screen Shot 2023-06-19 at 3 13 06 PM](https://github.com/aciffone23/Amazon-Clone/assets/110213103/92052ae1-f47d-4e3c-9903-c724ed80bb72)
 
