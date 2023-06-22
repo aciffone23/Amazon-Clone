@@ -5,7 +5,7 @@ import './Reviews.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
-import { updateReview } from '../../store/review';
+import { updateReview, deleteReview } from '../../store/review';
 
 const CustomerReviews = () => {
   const { id } = useParams();
@@ -44,6 +44,10 @@ const CustomerReviews = () => {
     setEditReviewId(reviewId);
   };
 
+  const handleDeleteReview = (productId, reviewId) => {
+    dispatch(deleteReview(productId, reviewId));
+  };
+
   const handleCancelEdit = () => {
     setEditReviewId(null);
   };
@@ -65,10 +69,9 @@ const CustomerReviews = () => {
         userId: currentUser.id, // Add the userId from the currentUser
         productId: Number(id), // Add the productId from the route params
       };
-      dispatch(updateReview(updatedReview));
+      dispatch(updateReview(id, updatedReview));
       onCancel();
     };
-  
 
     return (
       <div>
@@ -104,6 +107,7 @@ const CustomerReviews = () => {
                     <p>{review.body}</p>
                   </div>
                   <button onClick={() => handleEditReview(review.id)}>Edit</button>
+                  <button onClick={() => handleDeleteReview(id, review.id)}>Delete</button> {/* Delete button */}
                 </div>
               ) : (
                 <>

@@ -8,19 +8,22 @@ class Api::ReviewsController < ApplicationController
     end
 
     def create
-        user_id = review_params[:user_id]
-        product_id = review_params[:product_id].to_i
+        user_id = params[:user_id]
+        product_id = params[:product_id].to_i
         if Review.exists?(user_id: user_id, product_id: product_id)
-            render json: { error: "You have already reviewed this product" }, status: 422
+          render json: { error: "You have already reviewed this product" }, status: 422
         else
-            @review = Review.new(review_params)
-            if @review.save
-                render json: @review, status: 200
-            else
-                render json: { errors: @review.errors.full_messages }, status: 422
-            end
+          @review = Review.new(review_params)
+          @review.user_id = user_id
+          @review.product_id = product_id
+          if @review.save
+            render json: @review, status: 200
+          else
+            render json: { errors: @review.errors.full_messages }, status: 422
+          end
         end
-    end
+      end
+      
 
     def update
         review_params[:product_id] = review_params[:product_id].to_i
@@ -33,15 +36,25 @@ class Api::ReviewsController < ApplicationController
         
 
     def review_params
-        # params.require(:review).permit(:user_id, :product_id, :title, :body, :rating)
-        {
-            user_id: params[:user_id],
-            product_id: params[:product_id],
-            title: params[:title],
-            body: params[:body],
-            rating: params[:rating]
-        }
+        # debugger
+        params.require(:review).permit(:title, :body, :rating)
+        # {
+        #     user_id: params[:user_id],
+        #     product_id: params[:product_id],
+        #     title: params[:title],
+        #     body: params[:body],
+        #     rating: params[:rating]
+        # }
     end
+
+    def destroy
+        @review = Review.find(params[:id])
+        if @review.destroy
+          render json: { message: "Review deleted successfully" }, status: 200
+        else
+          render json: { error: "Failed to delete review" }, status: 422
+        end
+      end
 
     private
 

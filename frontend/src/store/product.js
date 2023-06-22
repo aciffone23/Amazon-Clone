@@ -2,6 +2,9 @@ import csrfFetch from './csrf';
 
 const RECEIVE_PRODUCTS = 'product/receive_products';
 const RECEIVE_PRODUCT = 'product/receive_product';
+const RECEIVE_REVIEWS = 'product/receive_reviews';
+const RECEIVE_REVIEW = 'product/receive_review';
+const RECEIVE_UPDATED_REVIEW = 'product/receive_updated_review';
 
 
 const receiveProducts = products => {
@@ -72,17 +75,50 @@ export const fetchProduct = (productId) => async dispatch => {
 }
 
 const productReducer = (state = {}, action) => {
-    Object.freeze(state)
-    let newState = {...state}
+    Object.freeze(state);
+    let newState = { ...state };
     switch (action.type) {
-        case RECEIVE_PRODUCTS:
-            return {...newState, ...action.products}
-        case RECEIVE_PRODUCT:
-            newState[action.product.id] = action.product
-            return newState
-        default:
-            return state
+      case RECEIVE_PRODUCTS:
+        return { ...newState, ...action.products };
+      case RECEIVE_PRODUCT:
+        newState[action.product.id] = action.product;
+        return newState;
+      case RECEIVE_REVIEWS: {
+        const { productId, reviews } = action;
+        return {
+          ...newState,
+          [productId]: {
+            ...newState[productId],
+            reviews: [...reviews],
+          },
+        };
+      }
+      case RECEIVE_REVIEW: {
+        const { productId, review } = action;
+        return {
+          ...newState,
+          [productId]: {
+            ...newState[productId],
+            reviews: [...newState[productId]?.reviews, review],
+          },
+        };
+      }
+      case RECEIVE_UPDATED_REVIEW: {
+        const { productId, review } = action;
+        return {
+          ...newState,
+          [productId]: {
+            ...newState[productId],
+            reviews: newState[productId]?.reviews.map((r) =>
+              r.id === review.id ? review : r
+            ),
+          },
+        };
+      }
+      default:
+        return state;
     }
-}
+  };
+  
 
 export default productReducer
