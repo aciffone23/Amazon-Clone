@@ -121,4 +121,24 @@
     box-sizing: border-box; /* Ensure the padding is included in the width calculation */
     margin-bottom: 20px;
   }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .errors .headline-input,
+  .errors textarea {
+    border: 1px solid red;
+    outline: none; /* Optional: Removes the default outline */
+    color: #111;
+
+  }
+
+  .errors textarea,
+    .error input {
+  border-color: red;
+}
+
+  
   

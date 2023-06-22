@@ -22,40 +22,31 @@ const CreateReviews = () => {
   const [rating, setRating] = useState(0);
   const [headline, setHeadline] = useState('');
   const [description, setDescription] = useState('');
+  const [headlineError, setHeadlineError] = useState('');
+  const [descriptionError, setDescriptionError] = useState('');
+  const [ratingError, setRatingError] = useState('');
+
 
   const handleRatingClick = (selectedRating) => {
     if (selectedRating === rating) {
-      // If the same rating is clicked, reset the rating to 0 (blank)
       setRating(0);
     } else {
-      // Otherwise, update the rating to the selected value
       setRating(selectedRating);
     }
   };
 
   const renderRatingStars = () => {
     const stars = Array(5).fill(0).map((_, index) => {
-      if (index < rating) {
-        return (
-          <FontAwesomeIcon
-            icon={solidStar}
-            size="sm"
-            style={{ color: "#ffa41c" }}
-            key={`star-${index}`}
-            onClick={() => handleRatingClick(index + 1)}
-          />
-        );
-      } else {
-        return (
-          <FontAwesomeIcon
-            icon={thinStar}
-            size="sm"
-            style={{ color: "#ffa41c" }}
-            key={`star-${index}`}
-            onClick={() => handleRatingClick(index + 1)}
-          />
-        );
-      }
+      const starIcon = index < rating ? solidStar : thinStar;
+      return (
+        <FontAwesomeIcon
+          icon={starIcon}
+          size="sm"
+          style={{ color: "#ffa41c" }}
+          key={`star-${index}`}
+          onClick={() => handleRatingClick(index + 1)}
+        />
+      );
     });
 
     return stars;
@@ -63,6 +54,35 @@ const CreateReviews = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    let isValid = true;
+
+    if (!rating) {
+        setRatingError('Please select a rating.');
+        isValid = false;
+    } else {
+        setRatingError('');
+    }
+
+    if (!headline.trim()) {
+      // Handle error: Headline is not filled in
+      setHeadlineError('Please enter a headline.');
+      isValid = false;
+    } else {
+      setHeadlineError('');
+    }
+
+    if (!description.trim()) {
+      // Handle error: Description is not filled in
+      setDescriptionError('Please enter a description.');
+      isValid = false;
+    } else {
+      setDescriptionError('');
+    }
+
+    if (!isValid) {
+      return;
+    }
 
     // Create the review data object
     const reviewData = {
@@ -102,25 +122,28 @@ const CreateReviews = () => {
         <div className="star-review-cont">
           <p className="product-review-rating">Overall Rating</p>
           <div className="star-rating-reviews">{renderRatingStars()}</div>
+          {ratingError && <p className="error-message">{ratingError}</p>}
         </div>
         <div>
           <hr />
         </div>
         <form>
-          <div className="form-section">
-            <h3 className="headline-label">Add a Headline</h3>
-            <input
-              type="text"
-              className="headline-input"
-              placeholder="What's most important to know?"
-              value={headline}
-              onChange={(e) => setHeadline(e.target.value)}
-            />
-          </div>
+        <div className={`form-section ${headlineError ? 'errors' : ''}`}>
+  <h3 className="headline-label">Add a Headline</h3>
+  <input
+    type="text"
+    className={`headline-input ${headlineError ? 'error' : ''}`}
+    placeholder="What's most important to know?"
+    value={headline}
+    onChange={(e) => setHeadline(e.target.value)}
+  />
+  {headlineError && <p className="error-message">{headlineError}</p>}
+</div>
+
           <div>
             <hr />
           </div>
-          <div className="form-section">
+          <div className={`form-section ${descriptionError ? 'errors' : ''}`}>
             <h3 className="review-label">Add a written review</h3>
             <textarea
               className="description-textarea"
@@ -128,6 +151,7 @@ const CreateReviews = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
+            {descriptionError && <p className="error-message">{descriptionError}</p>}
           </div>
           <div>
             <hr />
