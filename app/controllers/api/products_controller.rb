@@ -7,8 +7,13 @@ class Api::ProductsController < ApplicationController
     end
   
     def show
-      @product = Product.find(params[:id])
-      render :show
-    end
+        @product = Product.select(:id, :name, :description, :category, :price, :brand, :dimensions, :created_at, 'AVG(reviews.rating) AS average_stars', 'COUNT(reviews.id) AS review_count')
+                          .left_outer_joins(:reviews)
+                          .where(id: params[:id])
+                          .group(:id)
+                          .first
+        render :show
+      end
+      
   end
   

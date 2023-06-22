@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get '/products/category/:category', to: 'products#index'
     resources :products, only: [:index, :show]
     resource :cart, only: [:create, :show, :update, :destroy]
-    resources :reviews, only: [:create, :show, :index]
+    resources :reviews, only: [:create, :update, :show, :index]
   end
 
   get '*path', to: 

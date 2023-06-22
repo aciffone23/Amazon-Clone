@@ -1,23 +1,27 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { fetchProduct, getProduct } from '../../../store/product';
 import './CreateReview.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as thinStar } from '@fortawesome/free-regular-svg-icons';
+import { createReview } from '../../../store/review';
 
 const CreateReviews = () => {
   const { id } = useParams();
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const product = useSelector(getProduct(id));
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchProduct(id));
   }, [dispatch, id]);
 
   const [rating, setRating] = useState(0);
+  const [headline, setHeadline] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleRatingClick = (selectedRating) => {
     if (selectedRating === rating) {
@@ -57,6 +61,30 @@ const CreateReviews = () => {
     return stars;
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Create the review data object
+    const reviewData = {
+      productId: id,
+      rating: rating,
+      title: headline,
+      body: description,
+      userId: sessionUser.id
+    };
+
+    // Dispatch the createReview action
+    await dispatch(createReview(reviewData));
+
+    // Reset the form inputs
+    setRating(0);
+    setHeadline('');
+    setDescription('');
+
+    // Redirect back to the product show page
+    navigate(`/products/${id}`);
+  };
+
   return (
     <>
       <div className="user-header-box">
@@ -81,7 +109,13 @@ const CreateReviews = () => {
         <form>
           <div className="form-section">
             <h3 className="headline-label">Add a Headline</h3>
-            <input type="text" className="headline-input" placeholder="What's most important to know?" />
+            <input
+              type="text"
+              className="headline-input"
+              placeholder="What's most important to know?"
+              value={headline}
+              onChange={(e) => setHeadline(e.target.value)}
+            />
           </div>
           <div>
             <hr />
@@ -91,13 +125,15 @@ const CreateReviews = () => {
             <textarea
               className="description-textarea"
               placeholder="What did you like or dislike? What did you use this product for?"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             ></textarea>
           </div>
           <div>
             <hr />
           </div>
           <div className="submit-container">
-            <button type="submit" className="submit-button">
+            <button type="submit" className="submit-button" onClick={handleSubmit}>
               Submit
             </button>
           </div>

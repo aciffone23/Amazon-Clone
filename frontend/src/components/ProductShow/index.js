@@ -47,8 +47,7 @@ const ProductShow = () => {
     const [dollars, cents] = price.split('.');
 
     const handleReviewButtonClick = () => {
-        debugger
-        navigate(`/create-review/${id}`);
+        navigate(`/reviews/${id}`);
     };
 
     return (

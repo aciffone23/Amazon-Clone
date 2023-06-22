@@ -6,4 +6,5 @@ json.reviews @product.reviews do |review|
   json.author review.user.name
 end
 
-json.average_stars @product.reviews.average(:rating).to_f if @product.reviews.present?
+json.averageStars @product.average_stars || 0
+json.reviewCount @product.review_count || 0

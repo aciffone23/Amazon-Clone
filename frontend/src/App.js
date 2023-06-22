@@ -74,7 +74,7 @@ function App() {
             </ProtectedRoute>
             <Footer />
           </div>}/>
-        <Route path="/create-review/:id" element={
+        <Route path="/reviews/:id" element={
           <div>
             <Navigation />
             <ProtectedRoute>
