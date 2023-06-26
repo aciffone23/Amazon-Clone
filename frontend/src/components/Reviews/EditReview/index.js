@@ -8,7 +8,7 @@ import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as thinStar } from '@fortawesome/free-regular-svg-icons';
 import { updateReview } from '../../../store/review';
 
-const UpdateReviews = () => {
+const EditReviews = () => {
   const { id } = useParams();
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -179,4 +179,4 @@ const UpdateReviews = () => {
   );
 };
 
-export default UpdateReviews;
+export default EditReviews;

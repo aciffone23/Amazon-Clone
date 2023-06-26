@@ -53,7 +53,7 @@ const CustomerReviews = () => {
       headline: review.title,
       body: review.body,
     };
-    navigate(`/update-review/${id}`, { state: reviewDetails });
+    navigate(`/edit-review/${id}`, { state: reviewDetails });
   };
   
 
