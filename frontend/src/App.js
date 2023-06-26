@@ -16,6 +16,7 @@ import SearchListings from './components/SearchListings';
 import CustomerReviews from './components/Reviews';
 import CreateReviews from './components/Reviews/CreateReview';
 import LoginModal from './components/ProductShow/Modal';
+import UpdateReviews from './components/Reviews/EditReview';
 
 function App() {
   const location = useLocation();
@@ -75,11 +76,19 @@ function App() {
             </ProtectedRoute>
             <Footer />
           </div>}/>
-        <Route path="/reviews/:id" element={
+        <Route path="/create-review/:id" element={
           <div>
             <Navigation />
             <ProtectedRoute>
               <CreateReviews/>
+            </ProtectedRoute>
+            <Footer />
+          </div>}/>
+        <Route path="/update-review/:id" element={
+          <div>
+            <Navigation />
+            <ProtectedRoute>
+              <UpdateReviews/>
             </ProtectedRoute>
             <Footer />
           </div>}/>

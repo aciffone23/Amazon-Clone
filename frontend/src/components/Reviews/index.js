@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector} from 'react-redux';
+import { useParams, useNavigate  } from 'react-router-dom';
 import './Reviews.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
-import { updateReview, deleteReview, fetchReviews } from '../../store/review';
+import { deleteReview, fetchReviews } from '../../store/review';
 
 const CustomerReviews = () => {
   const { id } = useParams();
@@ -13,6 +13,7 @@ const CustomerReviews = () => {
   const currentUser = useSelector((state) => state.session.user);
   const [editReviewId, setEditReviewId] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     dispatch(fetchReviews(id));
@@ -45,8 +46,16 @@ const CustomerReviews = () => {
   const sortedReviews = reviews?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   const handleEditReview = (reviewId) => {
-    setEditReviewId(reviewId);
+    const review = sortedReviews.find((review) => review.id === reviewId);
+    const reviewDetails = {
+      reviewId: review.id,
+      rating: review.rating,
+      headline: review.title,
+      body: review.body,
+    };
+    navigate(`/update-review/${id}`, { state: reviewDetails });
   };
+  
 
   const handleDeleteReview = (productId, reviewId) => {
     dispatch(deleteReview(productId, reviewId));
@@ -54,38 +63,6 @@ const CustomerReviews = () => {
 
   const handleCancelEdit = () => {
     setEditReviewId(null);
-  };
-
-  const EditReviewForm = ({ review, onCancel }) => {
-    const [editedReview, setEditedReview] = useState(review);
-
-    const handleChange = (e) => {
-      setEditedReview((prevReview) => ({
-        ...prevReview,
-        [e.target.name]: e.target.value,
-      }));
-    };
-
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      const updatedReview = {
-        ...editedReview,
-        userId: currentUser.id,
-        productId: Number(id),
-      };
-      dispatch(updateReview(id, updatedReview));
-      onCancel();
-    };
-
-    return (
-      <div>
-        <form onSubmit={handleSubmit}>
-          <textarea name="body" value={editedReview.body} onChange={handleChange} />
-          <button type="submit">Save</button>
-          <button type="button" onClick={onCancel}>Cancel</button>
-        </form>
-      </div>
-    );
   };
 
   return (
@@ -111,13 +88,19 @@ const CustomerReviews = () => {
                     <div className="review-body">
                       <p>{review.body}</p>
                     </div>
-                    <button onClick={() => handleEditReview(review.id)}>Edit</button>
-                    <button onClick={() => handleDeleteReview(id, review.id)}>Delete</button>
+                    <div className="button-container">
+                      <button className="review-form-btns" onClick={() => handleEditReview(review.id)}>
+                        Edit
+                      </button>
+                      <button className="review-form-btns" onClick={() => handleDeleteReview(id, review.id)}>
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <>
                     {editReviewId === review.id ? (
-                      <EditReviewForm review={review} onCancel={handleCancelEdit} />
+                      null 
                     ) : (
                       <div className="review-body">
                         <p>{review.body}</p>

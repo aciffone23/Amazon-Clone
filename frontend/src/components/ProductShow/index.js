@@ -54,7 +54,7 @@ const ProductShow = () => {
     } else if (product.reviews.find(review => review.author === currentUser.name)) {
       alert('You have already left a review for this product.');
     } else {
-      navigate(`/reviews/${id}`);
+      navigate(`/create-review/${id}`);
     }
   };
 

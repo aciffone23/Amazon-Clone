@@ -26,7 +26,15 @@ class Api::ReviewsController < ApplicationController
       
 
     def update
-        review_params[:product_id] = review_params[:product_id].to_i
+        # review_params[:product_id] = review_params[:product_id].to_i
+        user_id = params[:user_id]
+        product_id = params[:product_id]
+        review_id = params[:review_id]
+        #check if this review exists in your database 
+        #find operATION
+
+        #UPDATE THE OBJECT WITH THE NEW THINGS FROM THE FORM 
+        #SAVE 
         if @review.update(review_params)
           render json: @review, status: 200
         else
@@ -36,7 +44,6 @@ class Api::ReviewsController < ApplicationController
         
 
     def review_params
-        # debugger
         params.require(:review).permit(:title, :body, :rating)
         # {
         #     user_id: params[:user_id],
@@ -63,6 +70,9 @@ class Api::ReviewsController < ApplicationController
     end   
     
     def find_review
-        @review = Review.find(params[:id])
+        @review = Review.find_by(id: params[:review_id])
+        render json: { error: "Review not found" }, status: 404 unless @review
       end
+      
+      
 end

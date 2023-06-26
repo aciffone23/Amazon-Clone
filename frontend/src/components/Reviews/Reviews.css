@@ -67,4 +67,32 @@
     line-height: 20px;
     margin: 0;
   }
+
+  .review-form-btns {
+    background-color: transparent;
+    border: none;
+    display: block;
+    font-size: 11px;
+    line-height: 20px;
+    margin: 0;
+    outline: 0;
+    padding: 0 10px 0 11px;
+    text-align: center;
+    white-space: nowrap;
+    width: 77px;
+    border: 1px solid lightgray;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 7px;
+  }
   
+  .review-form-btns:hover {
+    background-color: rgb(238, 237, 237);
+    cursor: pointer;
+  }
+
+  .button-container {
+    display: flex;
+  }

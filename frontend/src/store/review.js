@@ -55,7 +55,7 @@ export const createReview = (reviewData) => async (dispatch) => {
 }
 
 export const updateReview = (productId, reviewData) => async (dispatch) => {
-    const response = await csrfFetch(`/api/reviews/${reviewData.id}`, {
+    const response = await csrfFetch(`/api/reviews/${productId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ export const updateReview = (productId, reviewData) => async (dispatch) => {
     if (response.ok) {
       const updatedReview = await response.json();
       dispatch(receiveUpdatedReview(productId, updatedReview));
-      dispatch(fetchProduct(productId));
+    //   dispatch(fetchProduct(productId));
     } else {
       const errorData = await response.json();
       if (errorData.errors) {
@@ -107,13 +107,17 @@ const reviewsReducer = (state = {} , action) => {
         //         ...state,
         //         [action.productId]: [...state[action.productId], action.review],
         //       };
-            //   case RECEIVE_UPDATED_REVIEW:
-            //     return {
-            //         ...state,
-            //         [action.productId]: state[action.productId].map((review) =>
-            //           review.id === action.review.id ? action.review : review
-            //         ),
-            //       }; 
+        case RECEIVE_UPDATED_REVIEW:
+            if (state[action.productId]) {
+              return {
+                ...state,
+                [action.productId]: state[action.productId].map((review) =>
+                  review.id === action.review.id ? action.review : review
+                ),
+              };
+            }
+            return state;
+          
            
         default:
             return state;
